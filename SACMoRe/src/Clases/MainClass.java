@@ -1,6 +1,8 @@
 package Clases;
 import java.util.Scanner;
 
+import Clases.Comunidades.Usuario;
+
 public class MainClass {
 	public static void main(String[] args) {
 		Usuario usuario = new Usuario();

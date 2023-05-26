@@ -1,4 +1,4 @@
-package Clases;
+package Clases.Comunidades;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -43,10 +43,10 @@ public class Contrasenia {
 
 	private Boolean ContraseniaNotTopMil(String contraValidar) {
 		ArrayList<String> contraseniasDebiles = new ArrayList<String>();
-		String archivoContraseniasDebiles = "/src/Resources/peores_contrasenias.txt";
+		String archivoContraseniasDebiles = "/SACMoRe/src/Resources/peores_contrasenias.txt";
 		try {
 			contraseniasDebiles = (ArrayList<String>) Files
-					.readAllLines(Paths.get(System.getProperty("user.dir") + archivoContraseniasDebiles));
+					.readAllLines(Paths.get(System.getProperty("user.dir") + archivoContraseniasDebiles));					
 		} catch (IOException e) {
 			System.out.println("No se pudo leer el archivo: " + e.getMessage());
 			return false;

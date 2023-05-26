@@ -1,4 +1,4 @@
-package Clases;
+package Clases.Comunidades;
 
 public class Usuario {
 	private String nombre;
