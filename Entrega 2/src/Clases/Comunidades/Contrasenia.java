@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import Clases.Shared.Mensajero;
 //Para limitar o incrementar el tiempo de respuesta de cada intento fallido de inicio de sesión,
 //vamos a utilizar un mecanismo de bloqueo o retraso exponencial. 
 //Es decir, cada vez que se produce un intento fallido de inicio de sesión, se aumenta el tiempo de espera antes del siguiente intento,
@@ -22,28 +22,26 @@ public class Contrasenia {
 	public Contrasenia() {
 	}
 
-	public Boolean ValidarContrasenia() {
+	public boolean ValidarContrasenia() {
 
-		if (this.ContraseniaNotTopMil(this.contrasenia) && !this.RegexContrasenia(this.contrasenia)) {
-			System.out.println("Su contrasenia es segura.");
+		if (this.ContraseniaNotTopMil(this.contrasenia) && this.RegexContrasenia(this.contrasenia)) {		
+			Mensajero.MensajeContrasenia(1);
 			return true;
 		} else {
-			System.out.println("Su contrasenia es débil. Por favor, elija otra contrasenia.");
+			Mensajero.MensajeContrasenia(-1);
 			return false;
 		}
 	}
 
 	private Boolean RegexContrasenia(String contraValidar) {
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?!.*(.)\\1{2,})(?!.*(\\d{2,}|[a-zA-Z]{2,}|[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{2,})).{8,64}$";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(contraValidar);
-		return matcher.matches();
+		String regex = "^(?=.{8,64}$)(?!.*(.)\\1{2}).*$";
+		return contraValidar.matches(regex);
 
 	}
 
 	private Boolean ContraseniaNotTopMil(String contraValidar) {
 		ArrayList<String> contraseniasDebiles = new ArrayList<String>();
-		String archivoContraseniasDebiles = "/SACMoRe/src/Resources/peores_contrasenias.txt";
+		String archivoContraseniasDebiles = "/src/Resources/peores_contrasenias.txt";
 		try {
 			contraseniasDebiles = (ArrayList<String>) Files
 					.readAllLines(Paths.get(System.getProperty("user.dir") + archivoContraseniasDebiles));					
