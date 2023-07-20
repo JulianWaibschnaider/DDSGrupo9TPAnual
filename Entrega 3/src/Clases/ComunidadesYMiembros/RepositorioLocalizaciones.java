@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class RepositorioLocalizaciones{
 
-    public ArrayList<Localizacion> localizaciones;
+    public ArrayList<Localizacion> localizaciones = new ArrayList<Localizacion>();
 
     public ArrayList<Localizacion> getLocalizaciones() {
         return localizaciones;

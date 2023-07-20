@@ -1,7 +1,8 @@
 package Clases;
 import java.util.Scanner;
 
-import Clases.ComunidadesYMiembros.Usuario;
+//import Clases.ComunidadesYMiembros.Usuario;
+import Clases.Shared.LlamadorDeAPI;
 
 public class MainClass {
 	public static void main(String[] args) {
@@ -12,7 +13,8 @@ public class MainClass {
 		
 		usuario.setContrasenia(contrasenia);
 		s.close();*/
-
-		ServiciosController.CargarEntidadesPrestadoraYOrganismosDeControl();
+		
+		LlamadorDeAPI.llamarGeoREF();
+		//ServiciosController.CargarEntidadesPrestadoraYOrganismosDeControl();
 	}
 }
