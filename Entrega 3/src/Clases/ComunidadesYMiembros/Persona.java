@@ -6,6 +6,8 @@ import Clases.ServiciosPublicos.Entidad;
 import java.util.Date;
 import Clases.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
 import Clases.IncidentesYNotificaciones.Incidente;
+import Clases.IncidentesYNotificaciones.RepositorioIncidentes;
+import Clases.Shared.Mensajero;
 
 public class Persona {
 	private String nombre;
@@ -19,7 +21,7 @@ public class Persona {
 	private Localizacion localizacionActual;
 	private ArrayList<Incidente> incidentes;
 	private TipoMedioComunicacion medioDeComunicacionElegiddo;
-	private ArrayList<Date> horariosDeDisponibilidad;	
+	private ArrayList<Date> horariosDeDisponibilidad;
 	private ArrayList<EntidadPrestadora> recibirNotificacionesDe;
 
 	public String getNombre() {
@@ -126,9 +128,38 @@ public class Persona {
 		this.recibirNotificacionesDe = recibirNotificacionesDe;
 	}
 
-	public void definirRolEn(Comunidad comunidad){
-
+	public void definirRolEn(Comunidad comunidad, Boolean rol) {
+		//true es usuario afectado y false es usuario observador
+		if (rol) {
+			comunidad.addUsuariosAfectados(this);
+		} else {
+			comunidad.addUsuariosObservadores(this);
+		}
 	}
 
+	public void AbrirIncidente(Servicio _servicio) {
+		Incidente incidente = new Incidente();
+		String _observaciones = Mensajero.IngresarMensaje("Ingrese las observaciones del incidente:");
+		incidente.Abrir(this.getEmail(), _observaciones, _servicio);
+		this.incidentes.add(incidente);
+
+		for (Comunidad comunidad : comunidades) {
+			comunidad.AgregarIncidente(incidente);
+		}
+	}
+
+	public void CerrarIncidente(Incidente _incidente) {
+		_incidente.Cerrar();
+		ArrayList<Comunidad> comunidades = _incidente.getComunidades();
+		for (Comunidad comunidad : comunidades) {
+			comunidad.QuitarIncidente(_incidente);
+		}
+	}
+
+	public void ObtenerIncidentesPorEstado() {
+		ArrayList<Incidente> incidentesAbiertos = RepositorioIncidentes.GetIncidentesPorEstado(true);
+		ArrayList<Incidente> incidentesCerrados = RepositorioIncidentes.GetIncidentesPorEstado(false);
+
+	}
 
 }

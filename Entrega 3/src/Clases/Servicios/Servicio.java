@@ -6,4 +6,12 @@ import Clases.ServiciosPublicos.Entidad;
 public class Servicio {
     private Boolean enFuncionamiento;
     private Entidad entidad;
+
+    public Boolean getEnFuncionamiento() {
+        return enFuncionamiento;
+    }
+
+    public void setEnFuncionamiento(Boolean enFuncionamiento) {
+        this.enFuncionamiento = enFuncionamiento;
+    }
 }

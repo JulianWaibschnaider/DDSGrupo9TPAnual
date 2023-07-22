@@ -27,11 +27,17 @@ public class Comunidad {
     public void setUsuariosObservadores(ArrayList<Persona> usuariosObservadores) {
         this.usuariosObservadores = usuariosObservadores;
     }
+    public void addUsuariosObservadores(Persona persona){
+        this.usuariosObservadores.add(persona);
+    }
     public ArrayList<Persona> getUsuariosAfectados() {
         return usuariosAfectados;
     }
     public void setUsuariosAfectados(ArrayList<Persona> usuariosAfectados) {
         this.usuariosAfectados = usuariosAfectados;
+    }
+    public void addUsuariosAfectados(Persona persona){
+        this.usuariosAfectados.add(persona);
     }
     public ArrayList<Persona> getAdministradoresComunidad() {
         return administradoresComunidad;
@@ -56,5 +62,13 @@ public class Comunidad {
     }
     public void setIncidentes(ArrayList<Incidente> incidentes) {
         this.incidentes = incidentes;
+    }
+
+    public void AgregarIncidente(Incidente incidente) {
+        this.incidentes.add(incidente);
+    }
+
+    public void QuitarIncidente (Incidente incidente) {
+        this.incidentes.remove(incidente);
     }
 }
