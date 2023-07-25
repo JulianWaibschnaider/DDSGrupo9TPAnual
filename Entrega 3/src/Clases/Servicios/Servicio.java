@@ -13,5 +13,6 @@ public class Servicio {
 
     public void setEnFuncionamiento(Boolean enFuncionamiento) {
         this.enFuncionamiento = enFuncionamiento;
+        //Aca activo al notificador si es false
     }
 }

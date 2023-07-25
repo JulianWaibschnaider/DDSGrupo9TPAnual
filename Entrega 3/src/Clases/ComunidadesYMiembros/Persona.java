@@ -1,5 +1,6 @@
 package Clases.ComunidadesYMiembros;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import Clases.Servicios.Servicio;
 import Clases.ServiciosPublicos.Entidad;
@@ -7,6 +8,7 @@ import java.util.Date;
 import Clases.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
 import Clases.IncidentesYNotificaciones.Incidente;
 import Clases.IncidentesYNotificaciones.RepositorioIncidentes;
+import Clases.IncidentesYNotificaciones.NotificacionDeIncidente;
 import Clases.Shared.Mensajero;
 
 public class Persona {
@@ -20,8 +22,8 @@ public class Persona {
 	private Localizacion localizacionDeInteres;
 	private Localizacion localizacionActual;
 	private ArrayList<Incidente> incidentes;
-	private TipoMedioComunicacion medioDeComunicacionElegiddo;
-	private ArrayList<Date> horariosDeDisponibilidad;
+	private TipoMedioComunicacion medioDeComunicacionElegido;
+	private ArrayList<LocalDate> horariosDeDisponibilidad;//son horarios (momentos) especificos en los que se le puede notificar, NO en un rango
 	private ArrayList<EntidadPrestadora> recibirNotificacionesDe;
 
 	public String getNombre() {
@@ -104,19 +106,19 @@ public class Persona {
 		this.incidentes = incidentes;
 	}
 
-	public TipoMedioComunicacion getMedioDeComunicacionElegiddo() {
-		return medioDeComunicacionElegiddo;
+	public TipoMedioComunicacion getMedioDeComunicacionElegido() {
+		return medioDeComunicacionElegido;
 	}
 
-	public void setMedioDeComunicacionElegiddo(TipoMedioComunicacion medioDeComunicacionElegiddo) {
-		this.medioDeComunicacionElegiddo = medioDeComunicacionElegiddo;
+	public void setMedioDeComunicacionElegido(TipoMedioComunicacion medioDeComunicacionElegido) {
+		this.medioDeComunicacionElegido = medioDeComunicacionElegido;
 	}
 
-	public ArrayList<Date> getHorariosDeDisponibilidad() {
+	public ArrayList<LocalDate> getHorariosDeDisponibilidad() {
 		return horariosDeDisponibilidad;
 	}
 
-	public void setHorariosDeDisponibilidad(ArrayList<Date> horariosDeDisponibilidad) {
+	public void setHorariosDeDisponibilidad(ArrayList<LocalDate> horariosDeDisponibilidad) {
 		this.horariosDeDisponibilidad = horariosDeDisponibilidad;
 	}
 
@@ -129,7 +131,7 @@ public class Persona {
 	}
 
 	public void definirRolEn(Comunidad comunidad, Boolean rol) {
-		//true es usuario afectado y false es usuario observador
+		// true es usuario afectado y false es usuario observador
 		if (rol) {
 			comunidad.addUsuariosAfectados(this);
 		} else {
@@ -145,6 +147,7 @@ public class Persona {
 
 		for (Comunidad comunidad : comunidades) {
 			comunidad.AgregarIncidente(incidente);
+			
 		}
 	}
 
@@ -156,10 +159,25 @@ public class Persona {
 		}
 	}
 
-	public void ObtenerIncidentesPorEstado() {
-		ArrayList<Incidente> incidentesAbiertos = RepositorioIncidentes.GetIncidentesPorEstado(true);
-		ArrayList<Incidente> incidentesCerrados = RepositorioIncidentes.GetIncidentesPorEstado(false);
+	public ArrayList<Incidente> ObtenerIncidentesPorEstado(Boolean _estado) {
+		ArrayList<Incidente> incidentes =  new ArrayList<Incidente>();	
+		if (_estado) {
+			 incidentes = RepositorioIncidentes.GetIncidentesPorEstado(true);
+		} else {
+			 incidentes = RepositorioIncidentes.GetIncidentesPorEstado(false);
+		}
 
+		return incidentes;
+	}
+
+	public void NotificarIncidente(Incidente incidente){
+		NotificacionDeIncidente notificacion = new NotificacionDeIncidente(incidente, false);
+		if(this.medioDeComunicacionElegido== TipoMedioComunicacion.EMAIL){
+			notificacion.enviarNotificacionCorreo(this.email);
+		}else if(this.medioDeComunicacionElegido== TipoMedioComunicacion.WHATSAPP){
+			notificacion.enviarNotificacionWhatsApp(this.nroTelefono);
+		}
+		
 	}
 
 }

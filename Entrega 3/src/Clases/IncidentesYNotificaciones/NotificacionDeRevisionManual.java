@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class NotificacionDeRevisionManual {
 	private Incidente incidente;
-	private String descripcion;
     private Persona persona;
     private Boolean estado;
 
@@ -17,4 +16,7 @@ public class NotificacionDeRevisionManual {
     public void NotificarPorLocalizacion() {
         
     }
+    //lo que vamos a hacer es tomar como "cerca" que la localizacion actual de la persona y del servicio roto tengan el mismo municipio
+    //cuando esas dos cosas coincidan, se notifica
+    //cada 1 hora que mire la localizacion actual de las personas
 }

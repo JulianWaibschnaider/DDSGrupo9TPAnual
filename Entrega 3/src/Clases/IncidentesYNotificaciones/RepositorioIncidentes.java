@@ -17,9 +17,11 @@ public class RepositorioIncidentes {
         this.incidentes.add(incidente);
     }
 
-    public static ArrayList<Incidente> GetIncidentesPorEstado(Boolean estado){
-        //estamos permitiendo que una persona haga la consulta de incidentes por estado, de todos los incidentes que existen en el sistema.
-        //la consigna no especifica si debería ser de los incidentes de la comunidad en la que la persona está.
+    public static ArrayList<Incidente> GetIncidentesPorEstado(Boolean estado) {
+        // estamos permitiendo que una persona haga la consulta de incidentes por
+        // estado, de todos los incidentes que existen en el sistema.
+        // la consigna no especifica si debería ser de los incidentes de la comunidad en
+        // la que la persona está.
         ArrayList<Incidente> incidentesPorEstado = new ArrayList<Incidente>();
         for (Incidente incidente : incidentes) {
             if (incidente.getEstado() == estado) {
@@ -27,6 +29,12 @@ public class RepositorioIncidentes {
             }
         }
         return incidentesPorEstado;
+    }
+
+    public static ArrayList<Incidente> incidentesNoEnviados = new ArrayList<Incidente>();
+
+    public static void addIncidenteNoEnviado(Incidente incidente) {
+        incidentesNoEnviados.add(incidente);
     }
 
 }
