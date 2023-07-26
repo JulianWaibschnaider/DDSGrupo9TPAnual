@@ -1,8 +1,6 @@
 package Clases.RankingsEInformes;
 
-public class Rankear{
+public interface Rankear{
 
-    private void Execute(){
-
-    }
+    public void Execute();
 }

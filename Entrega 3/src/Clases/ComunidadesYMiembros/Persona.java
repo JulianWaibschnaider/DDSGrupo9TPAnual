@@ -4,12 +4,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import Clases.Servicios.Servicio;
 import Clases.ServiciosPublicos.Entidad;
+import Clases.ServiciosPublicos.UbicacionGeografica;
+
 import java.util.Date;
 import Clases.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
 import Clases.IncidentesYNotificaciones.Incidente;
 import Clases.IncidentesYNotificaciones.RepositorioIncidentes;
 import Clases.IncidentesYNotificaciones.NotificacionDeIncidente;
+import Clases.IncidentesYNotificaciones.NotificacionDeRevisionManual;
 import Clases.Shared.Mensajero;
+import Clases.Servicios.RepositorioServicios;
 
 public class Persona {
 	private String nombre;
@@ -20,10 +24,11 @@ public class Persona {
 	private ArrayList<Servicio> serviciosDeInteres;
 	private ArrayList<Entidad> serviciosPublicosDeInteres;
 	private Localizacion localizacionDeInteres;
-	private Localizacion localizacionActual;
+	private UbicacionGeografica localizacionActual;
 	private ArrayList<Incidente> incidentes;
 	private TipoMedioComunicacion medioDeComunicacionElegido;
-	private ArrayList<LocalDate> horariosDeDisponibilidad;//son horarios (momentos) especificos en los que se le puede notificar, NO en un rango
+	private ArrayList<LocalDate> horariosDeDisponibilidad;// son horarios (momentos) especificos en los que se le puede
+															// notificar, NO en un rango
 	private ArrayList<EntidadPrestadora> recibirNotificacionesDe;
 
 	public String getNombre() {
@@ -90,12 +95,14 @@ public class Persona {
 		this.localizacionDeInteres = localizacionDeInteres;
 	}
 
-	public Localizacion getLocalizacionActual() {
+	public UbicacionGeografica getLocalizacionActual() {
 		return localizacionActual;
 	}
 
-	public void setLocalizacionActual(Localizacion localizacionActual) {
+	public void setLocalizacionActual(UbicacionGeografica localizacionActual) {
 		this.localizacionActual = localizacionActual;
+		NotificarCercaniaAIncidente();
+		// si esta cerca del servicio de un incidente, se le notifica para que vaya a revisarlo manualmente
 	}
 
 	public ArrayList<Incidente> getIncidentes() {
@@ -147,7 +154,7 @@ public class Persona {
 
 		for (Comunidad comunidad : comunidades) {
 			comunidad.AgregarIncidente(incidente);
-			
+
 		}
 	}
 
@@ -160,24 +167,37 @@ public class Persona {
 	}
 
 	public ArrayList<Incidente> ObtenerIncidentesPorEstado(Boolean _estado) {
-		ArrayList<Incidente> incidentes =  new ArrayList<Incidente>();	
+		ArrayList<Incidente> incidentes = new ArrayList<Incidente>();
 		if (_estado) {
-			 incidentes = RepositorioIncidentes.GetIncidentesPorEstado(true);
+			incidentes = RepositorioIncidentes.GetIncidentesPorEstado(true);
 		} else {
-			 incidentes = RepositorioIncidentes.GetIncidentesPorEstado(false);
+			incidentes = RepositorioIncidentes.GetIncidentesPorEstado(false);
 		}
 
 		return incidentes;
 	}
 
-	public void NotificarIncidente(Incidente incidente){
+	public void NotificarIncidente(Incidente incidente) {
 		NotificacionDeIncidente notificacion = new NotificacionDeIncidente(incidente, false);
-		if(this.medioDeComunicacionElegido== TipoMedioComunicacion.EMAIL){
+		if (this.medioDeComunicacionElegido == TipoMedioComunicacion.EMAIL) {
 			notificacion.enviarNotificacionCorreo(this.email);
-		}else if(this.medioDeComunicacionElegido== TipoMedioComunicacion.WHATSAPP){
+		} else if (this.medioDeComunicacionElegido == TipoMedioComunicacion.WHATSAPP) {
 			notificacion.enviarNotificacionWhatsApp(this.nroTelefono);
 		}
-		
+
+	}
+
+	private void NotificarCercaniaAIncidente() {
+		Incidente incidenteCercano = RepositorioIncidentes.BuscarLocalizacionCercana(this.localizacionActual);
+		if (incidenteCercano != null) {
+			NotificacionDeRevisionManual notificacionDeRevisionManual = new NotificacionDeRevisionManual(
+					incidenteCercano, false);
+			if (this.medioDeComunicacionElegido == TipoMedioComunicacion.EMAIL) {
+				notificacionDeRevisionManual.enviarNotificacionCorreo(this.email);
+			} else if (this.medioDeComunicacionElegido == TipoMedioComunicacion.WHATSAPP) {
+				notificacionDeRevisionManual.enviarNotificacionWhatsApp(this.nroTelefono);
+			}
+		}
 	}
 
 }

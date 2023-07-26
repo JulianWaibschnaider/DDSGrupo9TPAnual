@@ -2,6 +2,11 @@ package Clases.IncidentesYNotificaciones;
 
 import java.util.ArrayList;
 
+import Clases.Servicios.Servicio;
+import Clases.ServiciosPublicos.Entidad;
+import Clases.ServiciosPublicos.UbicacionGeografica;
+import Clases.Shared.Utils;
+
 public class RepositorioIncidentes {
     public static ArrayList<Incidente> incidentes = new ArrayList<Incidente>();
 
@@ -13,8 +18,20 @@ public class RepositorioIncidentes {
         this.incidentes = incidente;
     }
 
-    public void addIncidentes(Incidente incidente) {
-        this.incidentes.add(incidente);
+    public static void addIncidentes(Incidente incidente) {
+        RepositorioIncidentes.incidentes.add(incidente);
+    }
+
+    public static void deleteIncidentes(Incidente incidente) {
+        RepositorioIncidentes.incidentes.remove(incidente);
+    }
+
+    public static void UpdateIncidentes(Incidente incidente) {
+        for (Incidente incidenteActual : incidentes) {
+            if (incidenteActual.getId() == incidente.getId()) {
+                incidenteActual = incidente;
+            }
+        }
     }
 
     public static ArrayList<Incidente> GetIncidentesPorEstado(Boolean estado) {
@@ -35,6 +52,31 @@ public class RepositorioIncidentes {
 
     public static void addIncidenteNoEnviado(Incidente incidente) {
         incidentesNoEnviados.add(incidente);
+    }
+
+    public static Incidente BuscarLocalizacionCercana(UbicacionGeografica ubicacion) {
+        // la que llega por parametro es la ubicacion actual de la persona
+        // pactamos que "cerca" es estar a 500 metros del lugar del incidente
+        for (Incidente incidente : incidentes) {
+            if (incidente.getEstado() == true) {// si el incidente esta abierto
+                Servicio servicio = incidente.getServicio();
+                // se supone que todos los servicios que estan en esta lista de incidentes estan
+                // fuera de servicio, porque el incidente esta abierto
+
+                Entidad entidad = servicio.getEntidad();
+
+                Double longitud = entidad.getUbicacionGeografica().getLongitud();
+                Double latitud = entidad.getUbicacionGeografica().getLatitud();
+
+                Double distancia = Utils.CalcularDistancia(longitud, latitud, ubicacion.getLongitud(),
+                        ubicacion.getLatitud());
+
+                if (distancia <= 0.5) {// suponemos que son km
+                    return incidente;
+                }
+            }
+        }
+        return null;
     }
 
 }

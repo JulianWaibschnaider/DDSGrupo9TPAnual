@@ -1,6 +1,6 @@
 package Clases.RankingsEInformes;
 
-public class MayorCantidadIncidentes extends Rankear{
+public class MayorCantidadIncidentes implements Rankear{
 
     public void Execute(){
 

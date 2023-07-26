@@ -7,6 +7,14 @@ public class Servicio {
     private Boolean enFuncionamiento;
     private Entidad entidad;
 
+    public Entidad getEntidad() {
+        return entidad;
+    }
+
+    public void setEntidad(Entidad entidad) {
+        this.entidad = entidad;
+    }
+
     public Boolean getEnFuncionamiento() {
         return enFuncionamiento;
     }
