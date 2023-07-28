@@ -6,11 +6,12 @@ import Clases.Servicios.Servicio;
 import Clases.ServiciosPublicos.Entidad;
 import Clases.ServiciosPublicos.UbicacionGeografica;
 import Clases.Shared.Utils;
+//import javax.swing.Timer;
 
 public class RepositorioIncidentes {
     public static ArrayList<Incidente> incidentes = new ArrayList<Incidente>();
 
-    public ArrayList<Incidente> getIncidentes() {
+    public static ArrayList<Incidente> getIncidentes() {
         return incidentes;
     }
 
@@ -54,6 +55,14 @@ public class RepositorioIncidentes {
         incidentesNoEnviados.add(incidente);
     }
 
+
+    public static void EnviarIncidentesNoEnviados() {
+       //aca va el timer que se ejecuta cada 30 min 
+        for (Incidente incidentenoEnviado : incidentesNoEnviados) {
+            incidentenoEnviado.NotificarIncidente();
+        }
+    }
+
     public static Incidente BuscarLocalizacionCercana(UbicacionGeografica ubicacion) {
         // la que llega por parametro es la ubicacion actual de la persona
         // pactamos que "cerca" es estar a 500 metros del lugar del incidente
@@ -62,7 +71,6 @@ public class RepositorioIncidentes {
                 Servicio servicio = incidente.getServicio();
                 // se supone que todos los servicios que estan en esta lista de incidentes estan
                 // fuera de servicio, porque el incidente esta abierto
-
                 Entidad entidad = servicio.getEntidad();
 
                 Double longitud = entidad.getUbicacionGeografica().getLongitud();
@@ -78,5 +86,8 @@ public class RepositorioIncidentes {
         }
         return null;
     }
+
+
+
 
 }

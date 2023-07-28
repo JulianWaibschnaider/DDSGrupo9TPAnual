@@ -5,9 +5,9 @@ import Clases.Shared.Utils;
 
 public class RepositorioEntidades {
     
-    private ArrayList<Entidad> entidades = new ArrayList<Entidad>();
+    private static ArrayList<Entidad> entidades = new ArrayList<Entidad>();
 
-    public ArrayList<Entidad> getEntidades() {
+    public static ArrayList<Entidad> getEntidades() {
         return entidades;
     }
 

@@ -1,6 +1,8 @@
 package Clases.Servicios;
 
 import java.util.ArrayList;
+
+import Clases.IncidentesYNotificaciones.Incidente;
 import Clases.ServiciosPublicos.Entidad;
 
 public class Servicio {

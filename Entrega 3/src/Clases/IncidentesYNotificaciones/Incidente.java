@@ -1,6 +1,7 @@
 package Clases.IncidentesYNotificaciones;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import Clases.ComunidadesYMiembros.Persona;
@@ -15,23 +16,32 @@ public class Incidente {
     private Servicio servicio;
     private Boolean estado;// true es abierto y false es cerrado
     private ArrayList<Comunidad> comunidades;
-    private LocalDateTime horarioApertura;
-    private LocalDateTime horarioCierre;
+    private LocalDateTime fechaApertura;
+    private LocalDateTime fechaCierre;
+    private long diferenciaCierreApertura;
 
-    public LocalDateTime getHorarioApertura() {
-        return horarioApertura;
+    public long getDiferenciaCierreApertura() {
+        return diferenciaCierreApertura;
     }
 
-    public void setHorarioApertura(LocalDateTime horarioApertura) {
-        this.horarioApertura = horarioApertura;
+    public void setDiferenciaCierreApertura() {
+        this.diferenciaCierreApertura = ChronoUnit.DAYS.between(fechaCierre, fechaApertura);
     }
 
-    public LocalDateTime getHorarioCierre() {
-        return horarioCierre;
+    public LocalDateTime getfechaApertura() {
+        return fechaApertura;
     }
 
-    public void setHorarioCierre(LocalDateTime horarioCierre) {
-        this.horarioCierre = horarioCierre;
+    public void setfechaApertura(LocalDateTime fechaApertura) {
+        this.fechaApertura = fechaApertura;
+    }
+
+    public LocalDateTime getfechaCierre() {
+        return fechaCierre;
+    }
+
+    public void setfechaCierre(LocalDateTime fechaCierre) {
+        this.fechaCierre = fechaCierre;
     }
 
     public Integer getId() {
@@ -56,10 +66,11 @@ public class Incidente {
         this.observaciones = _observaciones;
         this.servicio = _servicio;
         this.comunidades = persona.getComunidades();
-        this.horarioApertura = LocalDateTime.now();
-        this.horarioCierre = null;
+        this.fechaApertura = LocalDateTime.now();
+        this.fechaCierre = null;
         this.estado = true;// el estado del incidente es abierto
         this.servicio.setEnFuncionamiento(false); // ponemos el servicio fuera de servicio
+        this.servicio.getEntidad().addIncidenteEntidad(this);
         NotificarIncidente();
         RepositorioIncidentes.addIncidentes(this);
     }
@@ -67,8 +78,10 @@ public class Incidente {
     public void Cerrar() {
         this.servicio.setEnFuncionamiento(true);// ponemos el servicio en funcionamiento nuevamente
         this.estado = false;
-        this.horarioCierre = LocalDateTime.now();
+        this.fechaCierre = LocalDateTime.now();
         RepositorioIncidentes.UpdateIncidentes(this);
+        this.servicio.getEntidad().UpdateIncidenteEntidad(this);
+        this.setDiferenciaCierreApertura();
     }
 
     public ArrayList<Comunidad> getComunidades() {
