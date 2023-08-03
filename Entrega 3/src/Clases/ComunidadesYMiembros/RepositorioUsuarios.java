@@ -27,20 +27,5 @@ public class RepositorioUsuarios{
         return null;
     }
 
-    public static boolean IniciarSesion(String email, String contrasenia) {
-        Usuario usuario = buscarUsuario(email);
-        if (usuario != null) {
-            if (usuario.getContrasenia().getContrasenia().equals(contrasenia)) {
-                System.out.println("Inicio de sesion exitoso");
-                return true;
-            } else {
-                System.out.println("Credenciales incorrectas. Inténtelo nuevamente.");
-                return false;
-            }
-        } else {
-            System.out.println("El usuario no existe");
-            return false;
-        }
-    }
 
 }

@@ -1,8 +1,8 @@
 package Clases;
 import java.util.Scanner;
 
-import Clases.ComunidadesYMiembros.RepositorioUsuarios;
-//import Clases.ComunidadesYMiembros.Usuario;
+//import Clases.ComunidadesYMiembros.RepositorioUsuarios;
+import Clases.ComunidadesYMiembros.Usuario;
 import Clases.Shared.LlamadorDeAPI;
 
 public class MainClass {
@@ -20,13 +20,6 @@ public class MainClass {
 	}
 
 	private static void Login() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Bienvenido al sistema de login.");
-		System.out.print("Ingrese su email: ");
-		String email = scanner.nextLine();
-		System.out.print("Ingrese su contrasenia: ");
-		String password = scanner.nextLine();
-		scanner.close();
-		RepositorioUsuarios.IniciarSesion(email, password);
+		Usuario.IniciarSesion();
 	}
 }

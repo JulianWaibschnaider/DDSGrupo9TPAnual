@@ -5,14 +5,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import com.auth0.client.auth.AuthAPI;
+import com.auth0.json.auth.TokenHolder;
+import com.auth0.net.Request;
+
+import Clases.Auth0.Auth0Config;
 import Clases.ComunidadesYMiembros.Localizacion;
-import Clases.ComunidadesYMiembros.TipoLocalizacion;
 import Clases.ComunidadesYMiembros.RepositorioLocalizaciones;
+import Clases.ComunidadesYMiembros.TipoLocalizacion;
 
 public class LlamadorDeAPI {
 
@@ -76,7 +81,28 @@ public class LlamadorDeAPI {
           }
     }
 
-    public static void llamarAuth0(){
-        //esto lo hacemos la entrega que viene
-    }
+    public static Boolean llamarAuth0(String email, String contra){
+    	
+    	 AuthAPI authAPI = new AuthAPI(Auth0Config.DOMAIN, Auth0Config.CLIENT_ID, Auth0Config.CLIENT_SECRET);
+    	 
+         try {
+             // Realiza la solicitud de inicio de sesión a Auth0
+             Request<TokenHolder> request = authAPI.login(email, contra.toCharArray());
+             TokenHolder tokenHolder = request.execute();
+
+             // Obtiene los tokens de acceso y ID
+             String accessToken = tokenHolder.getAccessToken();
+             String idToken = tokenHolder.getIdToken();
+
+             System.out.println("Inicio de sesión exitoso.");
+             System.out.println("Token de acceso: " + accessToken);
+             System.out.println("Token ID: " + idToken);
+             return true;
+         } catch (Exception e) {
+             System.out.println("Inicio de sesión fallido. Error: " + e.getMessage());
+         }
+         return false;
+   
+
+}
 }
