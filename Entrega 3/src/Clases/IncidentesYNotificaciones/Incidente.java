@@ -70,6 +70,7 @@ public class Incidente {
         this.fechaCierre = null;
         this.estado = true;// el estado del incidente es abierto
         this.servicio.setEnFuncionamiento(false); // ponemos el servicio fuera de servicio
+       
         this.servicio.getEntidad().addIncidenteEntidad(this);
         NotificarIncidente();
         RepositorioIncidentes.addIncidentes(this);

@@ -5,6 +5,7 @@ import Clases.Servicios.Servicio;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Entidad {
@@ -12,13 +13,25 @@ public class Entidad {
     private ArrayList<Servicio> servicios;
     private UbicacionGeografica UbicacionGeografica;
     private ArrayList<Incidente> incidentes;
-    private float promedioCierre;
-    public float getPromedioCierre() {
-        return promedioCierre;
+    private float promedioCierreIncidentes;
+    private int incidentesReportados;
+
+    public int getIncidentesReportados() {
+        CalcularCantidadIncidentesReportados();
+        return incidentesReportados;
     }
 
-    public void setPromedioCierre(float promedioCierre) {
-        this.promedioCierre = promedioCierre;
+    public void setIncidentesReportados(int incidentesReportados) {
+        this.incidentesReportados = incidentesReportados;
+    }
+
+    public float getPromedioCierreIncidentes() {
+        CalcularPromedioCierreIncidentes();
+        return promedioCierreIncidentes;
+    }
+
+    public void setPromedioCierreIncidentes(float promedio) {
+        this.promedioCierreIncidentes = promedio;
     }
 
     public ArrayList<Incidente> getIncidentes() {
@@ -30,7 +43,17 @@ public class Entidad {
     }
 
     public void addIncidenteEntidad(Incidente incidente) {
-        incidentes.add(incidente);
+        if (incidentes.size() == 0) {
+            incidentes.add(incidente);
+        } else {
+            for (Incidente incidenteEnLista : incidentes) {
+                if (incidenteEnLista.getfechaApertura().plusHours(24).isAfter(LocalDateTime.now())
+                        && incidenteEnLista.getServicio() == incidente.getServicio()) {
+                    incidentes.add(incidente);
+                    break;
+                }
+            }
+        }
     }
 
     public void UpdateIncidenteEntidad(Incidente incidente) {
@@ -41,7 +64,7 @@ public class Entidad {
         }
     }
 
-    public void CalcularPromedioCierre() {
+    public void CalcularPromedioCierreIncidentes() {
         int suma = 0;
         int cantidad = 0;
         LocalDate finDeSemana = LocalDate.now().with(DayOfWeek.SUNDAY);
@@ -52,10 +75,20 @@ public class Entidad {
                     suma += Math.toIntExact(incidente.getDiferenciaCierreApertura());
                     cantidad++;
                 }
-
             }
         }
-         this.setPromedioCierre(cantidad != 0 ? suma / cantidad : 0);
+        this.setPromedioCierreIncidentes(cantidad != 0 ? suma / cantidad : 0);
+    }
+
+    public void CalcularCantidadIncidentesReportados() {
+        int cantidad = 0;
+        LocalDate finDeSemana = LocalDate.now().with(DayOfWeek.SUNDAY);
+        for (Incidente incidente : incidentes) {
+            if (incidente.getfechaApertura().toLocalDate().isBefore(finDeSemana)) {
+                cantidad++;
+            }
+        }
+        this.setIncidentesReportados(cantidad);
     }
 
     public String getNombre() {

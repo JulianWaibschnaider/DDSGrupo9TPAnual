@@ -1,32 +1,24 @@
 package Clases.ComunidadesYMiembros;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Usuario {
     private String email;
-	private Contrasenia contrasenia;
+    private Contrasenia contrasenia;
 
     public String getEmail() {
-		return email;
-	}
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-    private void IniciarSesion(){
-		//hacer
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Contrasenia getContrasenia() {
-		return contrasenia;
-	}
+        return contrasenia;
+    }
 
-	public void setContrasenia(String contrasenia) {
-		Contrasenia contra = new Contrasenia(contrasenia);
-		if (contra.ValidarContrasenia())
-			this.contrasenia = contra;
-	}
+    public void setContrasenia(String contrasenia) {
+        Contrasenia pass = new Contrasenia(contrasenia);
+        if (pass.ValidarContrasenia())
+            this.contrasenia = pass;
+    }
 }

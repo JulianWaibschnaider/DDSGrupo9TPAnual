@@ -76,7 +76,7 @@ public class LlamadorDeAPI {
           }
     }
 
-    public static void llamarGoogleAuth(){
+    public static void llamarAuth0(){
         //esto lo hacemos la entrega que viene
     }
 }

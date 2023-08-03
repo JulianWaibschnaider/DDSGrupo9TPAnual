@@ -1,6 +1,9 @@
 package Clases.RankingsEInformes;
 
-public interface Rankear{
+import java.util.ArrayList;
 
-    public void Execute();
+import Clases.ServiciosPublicos.Entidad;
+
+public interface Rankear{
+    public ArrayList<Entidad> Execute();
 }

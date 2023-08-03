@@ -8,15 +8,11 @@ public class RankingDeIncidentes{
     private Rankear estrategia;
     private ArrayList<Entidad> entidades;
 
-    public void GenerarInforme(){
-
+    public ArrayList<Entidad> Rankear(){
+        return estrategia.Execute();
     }
 
-    public void Rankear(){
-        estrategia.Execute();
-    }
-
-    public void setEstrategia(){
-        
+    public void setEstrategia(Rankear estrategia){
+        this.estrategia = estrategia;
     }
 }

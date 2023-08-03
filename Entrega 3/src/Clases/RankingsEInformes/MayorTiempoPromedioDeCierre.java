@@ -12,16 +12,18 @@ import Clases.ServiciosPublicos.RepositorioEntidades;
 
 public class MayorTiempoPromedioDeCierre implements Rankear {
 
-    public void Execute() {
+    public ArrayList<Entidad> Execute() {
         // recorrer lista de incidentes y buscar el que tenga mayor tiempo de cierre
         // devolvemos la entidad que tiene ese incidente
-        ArrayList<Entidad> rankingIncidentes = new ArrayList<Entidad>();
+        ArrayList<Entidad> rankingMayorTiempoPromedioDeCierre = new ArrayList<Entidad>();
 
         for (Entidad entidad : RepositorioEntidades.getEntidades()) {
-            if (entidad.getPromedioCierre() > 0) {
-                rankingIncidentes.add(entidad);
+            if (entidad.getPromedioCierreIncidentes() > 0) {
+                rankingMayorTiempoPromedioDeCierre.add(entidad);
             }
         }
-        rankingIncidentes.sort(Comparator.comparingDouble(Entidad::getPromedioCierre));
+        
+        rankingMayorTiempoPromedioDeCierre.sort(Comparator.comparingDouble(Entidad::getPromedioCierreIncidentes));
+        return rankingMayorTiempoPromedioDeCierre;
     }
 }
