@@ -11,7 +11,7 @@ public class HibernateUtil {
     private static EntityManagerFactory buildSessionFactory() {
         try {
             // Crea la sesión de Hibernate desde el archivo de configuración
-            return new Configuration().configure("Clases/hibernate.cfg.xml").buildSessionFactory();
+            return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Error al crear la sesión de Hibernate: " + ex);
             throw new ExceptionInInitializerError(ex);
