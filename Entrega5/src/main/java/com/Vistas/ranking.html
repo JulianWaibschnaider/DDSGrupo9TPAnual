@@ -238,47 +238,44 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1  class="h3 mb-2 text-gray-800">Mis comunidades</h1>
-                    <p class="mb-4">Aqui podras modificar tu rol en las comunidades que sos parte!</p>
+                    <h1  class="h3 mb-2 text-gray-800">Rankings</h1>
+                    <p class="mb-4">Aqui vas a ver los rankings de entidades</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Admin usuario</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Ranking</h6>
                         </div>
+                        <div>
+                        <label class="mb-4" style="padding-left: 1em;
+                        padding-top: 1em;" for="rankear">Rankear por:</label>
+                        <select name="rankear" id="rankear">
+                          <optgroup label="Ranking incidente">
+                            <option value="promedio">Mayor tiempo promedio cierre de incidentes</option>
+                            <option value="cantidad">Mayor cantidad de incidentes reportados</option>
+                            <option value="impacto">Mayor grado de impacto de las problematicas</option>
+                          </optgroup>
+                        </select>     
+                    </div>
                         <div class="card-body" >
                             
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Editar Rol</th>
-                                            <th>Comunidad</th>
-                                            <th>Mi Rol</th>
-                                            <th>Abandonar comunidad</th>
-                                           
+                                            <th>Puesto</th>
+                                            <th>Entidad</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#modalAbrirRolUsuario">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                            <th>Los lisiados</th>
-                                            <th>Usuario observador</th>
-                                            <th><a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                            <th>1</th>
+                                            <th>Linea C</th>
                                         </tr>
                                         <tr>
-                                            <th><a href="#" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#modalAbrirRolUsuario">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                            <th>Los rengos</th>
-                                            <th>Usuario afectado</th>
-                                            <th><a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                            <th>2</th>
+                                            <th>Linea B</th>
+                                   
                                         </tr>
                                     </tbody>
 
