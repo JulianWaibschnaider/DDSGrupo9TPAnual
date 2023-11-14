@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Entrega3</groupId>
+  <artifactId>Entrega3</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Entrega3</name>
+
+
+  <build>
+   <sourceDirectory>src/main/java</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+          <source>11</source> <!-- O la versión de Java que estás utilizando -->
+          <target>11</target> <!-- O la versión de Java que estás utilizando -->
+          <compilerArgs>
+            <arg>--add-modules</arg>
+            <arg>ALL-MODULE-PATH</arg>
+          </compilerArgs>
+        </configuration>
+
+
+      </plugin>
+
+    </plugins>
+
+    <testSourceDirectory>src/Tests/Unitarios</testSourceDirectory>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20210307</version>
+    </dependency>
+
+    <!-- <dependency>
+    <groupId>com.auth0</groupId>
+    <artifactId>auth0</artifactId>
+    <version>1.43.0</version> 
+	</dependency> -->
+	
+    <!-- Hibernate -->
+
+      <!-- Spring MVC -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <version>3.0.2</version>
+</dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.4.18.Final</version>
+  </dependency>
+
+
+
+	<dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>9.2.0.jre11</version> <!-- Utiliza la versión más reciente del controlador -->
+    </dependency>
+    
+	<dependency>
+       <groupId>com.microsoft.sqlserver</groupId>
+       <artifactId>mssql-jdbc_auth</artifactId>
+       <version>8.4.1.x64</version>
+       <type>dll</type>
+   </dependency>
+   
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>auth0</artifactId>
+      <version>1.27.0</version> <!-- Reemplaza con la última versión disponible -->
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.8.0</version>
+      <scope>test</scope>
+  </dependency>
+
+
+  </dependencies>
+
+</project>
