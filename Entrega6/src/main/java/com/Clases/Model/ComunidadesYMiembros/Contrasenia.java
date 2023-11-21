@@ -48,7 +48,7 @@ public class Contrasenia {
 
 	private Boolean ContraseniaNotTopMil(String contraValidar) {
 		List<String> contraseniasDebiles = new ArrayList<>();
-		String archivoContraseniasDebiles = "/src/Resources/peores_contrasenias.txt";
+		String archivoContraseniasDebiles = "/src/main/Resources/peores_contrasenias.txt";
 		try {
 			contraseniasDebiles = (List<String>) Files
 					.readAllLines(Paths.get(System.getProperty("user.dir") + archivoContraseniasDebiles));					

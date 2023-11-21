@@ -21,12 +21,12 @@ public class LoginController {
 		        return "login";
 		    }
 		
-		 @GetMapping(path = "/Iniciar")
-		 	public ResponseEntity<String> Iniciar() {
-			Persona persona = new Persona(); 
+		 @PostMapping(path = "/Iniciar")
+		 	public ResponseEntity<Usuario> Iniciar(@RequestBody Usuario usuario) {
 			
-			//usuario.IniciarSesion();
 			
-			return ResponseEntity.ok().body("Prueba");
+			usuario.IniciarSesion();
+			
+			return ResponseEntity.ok().body(usuario);
 		}
 }

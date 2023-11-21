@@ -1,4 +1,4 @@
-package main.java.com.Clases;
+package main.java.com.Controller;
 
 import javax.persistence.EntityManager;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +28,5 @@ public class MainClass {
 		 SpringApplication.run(MainClass.class, args);
 	}
 
-	private static void Login() {
-		Usuario.IniciarSesion();
-	}
+
 }

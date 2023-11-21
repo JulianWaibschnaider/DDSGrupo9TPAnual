@@ -5,6 +5,8 @@ import java.util.Scanner;
 import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 import  main.java.com.Clases.Model.Shared.LlamadorDeAPI;
 import  main.java.com.Clases.Model.Shared.Mensajero;
+import net.bytebuddy.asm.Advice.This;
+
 import javax.persistence.*;
 @Entity
 @Table(name = "Usuario")
@@ -40,15 +42,9 @@ public class Usuario {
             this.contrasenia = pass;
     }
     
-    public static Boolean IniciarSesion() {
-    	Scanner s = new Scanner(System.in);
-    	System.out.println("Ingrese Email: ");
-    	String email=s.nextLine();
-   
-    	System.out.println("Ingrese contraseña: ");
- 		String contra = s.nextLine();
-        s.close();
-    return LlamadorDeAPI.llamarAuth0(email, contra);
+    public Boolean IniciarSesion() {
+    
+    return LlamadorDeAPI.llamarAuth0(this.email ,this.contrasenia.getContrasenia());
     	
     }
     
