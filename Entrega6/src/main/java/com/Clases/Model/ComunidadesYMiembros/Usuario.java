@@ -5,6 +5,7 @@ import java.util.Scanner;
 import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 import  main.java.com.Clases.Model.Shared.LlamadorDeAPI;
 import  main.java.com.Clases.Model.Shared.Mensajero;
+import main.java.com.Clases.Model.ComunidadesYMiembros.*;
 import net.bytebuddy.asm.Advice.This;
 
 import javax.persistence.*;
@@ -44,8 +45,8 @@ public class Usuario {
     
     public Boolean IniciarSesion() {
     
-    return LlamadorDeAPI.llamarAuth0(this.email ,this.contrasenia.getContrasenia());
-    	
+    Usuario usuario = new Usuario();
+    	usuario = RepositorioUsuarios.findUsuarioByEmail(this.email)
     }
     
     
