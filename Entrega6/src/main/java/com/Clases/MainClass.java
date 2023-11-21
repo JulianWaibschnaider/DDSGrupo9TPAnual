@@ -1,12 +1,17 @@
 package main.java.com.Clases;
 
 import javax.persistence.EntityManager;
-
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import main.java.com.Clases.BD.HibernateManager;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
 //import Clases.ComunidadesYMiembros.RepositorioUsuarios;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 import main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.PersonaEncargada;
+
+@SpringBootApplication 
 public class MainClass {
 	public static void main(String[] args) {
 		/*
@@ -20,14 +25,7 @@ public class MainClass {
 		// LlamadorDeAPI.llamarGeoREF();
 		// ServiciosController.CargarEntidadesPrestadoraYOrganismosDeControl();
 
-		EntityManager em = HibernateManager.getEntityManager();
-		HibernateManager.comenzarTransaccion(em);
-
-		 PersonaEncargada personita = new PersonaEncargada();
-		 personita.setNombre("juan");
-		 personita.setApellido("carlos segundo");
-		 em.persist(personita);
-		 HibernateManager.commit(em);
+		 SpringApplication.run(MainClass.class, args);
 	}
 
 	private static void Login() {
