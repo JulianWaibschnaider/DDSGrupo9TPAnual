@@ -1,17 +1,22 @@
 package main.java.com.Controller;
 
+
 import javax.persistence.EntityManager;
+
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+
 import main.java.com.Clases.BD.HibernateManager;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
 //import Clases.ComunidadesYMiembros.RepositorioUsuarios;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 import main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.PersonaEncargada;
 
-@SpringBootApplication 
+@SpringBootApplication
 public class MainClass {
 	public static void main(String[] args) {
 		/*
@@ -24,7 +29,8 @@ public class MainClass {
 		// Login();
 		// LlamadorDeAPI.llamarGeoREF();
 		// ServiciosController.CargarEntidadesPrestadoraYOrganismosDeControl();
-
+		//EntityManager em = HibernateManager.getEntityManager();
+		//HibernateManager.comenzarTransaccion(em);
 		 SpringApplication.run(MainClass.class, args);
 	}
 

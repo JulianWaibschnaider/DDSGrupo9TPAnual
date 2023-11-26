@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import main.java.com.Clases.Model.ComunidadesYMiembros.*;
+import main.java.com.Clases.Model.JpaServicies.*;
 @Controller
 @CrossOrigin
 public class LoginController {
@@ -23,10 +24,11 @@ public class LoginController {
 		
 		 @PostMapping(path = "/Iniciar")
 		 	public ResponseEntity<Usuario> Iniciar(@RequestBody Usuario usuario) {
-			
-			
-			usuario.IniciarSesion();
-			
-			return ResponseEntity.ok().body(usuario);
+			 Usuario userIniciadio = new Usuario();
+			 userIniciadio = usuario.IniciarSesion();
+			 if(userIniciadio != null) {
+				 return ResponseEntity.ok().body(userIniciadio);
+			 }
+			 return ResponseEntity.ok().body(null);
 		}
 }

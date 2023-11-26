@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.json.mgmt.users.User;
 
+import main.java.com.Clases.Model.ComunidadesYMiembros.Contrasenia;
 import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioUsuarios;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 
@@ -13,13 +14,18 @@ public class UsuarioServicie {
 private RepositorioUsuarios repoUsuarios;
 
 public Usuario IniciarSesion(Usuario user) {
+	Boolean esUsuario = false;
 	if(!this.validarInicioSesion(user)) {
 		return null;
 	}
 	Usuario usuario = repoUsuarios.findUsuarioByEmail(user.getEmail());
 	if(usuario != null) {
-		//buscar contrasenia por id creando el repocontraenia y el service 
+		ContraseniaService contraService = new ContraseniaService();
+		Contrasenia contra =  contraService.ObtenerContraByUsuario(usuario.getContrasenia().getIdContrasenia());
+		 esUsuario = contra.getContrasenia().equals(user.getContrasenia().getContrasenia());
 	}
+	if(esUsuario) {return usuario;}
+	return null;
 }
 
 public Boolean validarInicioSesion(Usuario user) {

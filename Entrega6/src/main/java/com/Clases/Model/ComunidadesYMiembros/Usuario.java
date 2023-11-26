@@ -6,8 +6,7 @@ import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 import  main.java.com.Clases.Model.Shared.LlamadorDeAPI;
 import  main.java.com.Clases.Model.Shared.Mensajero;
 import main.java.com.Clases.Model.ComunidadesYMiembros.*;
-import net.bytebuddy.asm.Advice.This;
-
+import main.java.com.Clases.Model.JpaServicies.UsuarioServicie;
 import javax.persistence.*;
 @Entity
 @Table(name = "Usuario")
@@ -25,6 +24,7 @@ public class Usuario {
 	@Embedded
     private Contrasenia contrasenia;
 
+	
     public String getEmail() {
         return email;
     }
@@ -43,10 +43,11 @@ public class Usuario {
             this.contrasenia = pass;
     }
     
-    public Boolean IniciarSesion() {
-    
+    public Usuario IniciarSesion() {
     Usuario usuario = new Usuario();
-    	usuario = RepositorioUsuarios.findUsuarioByEmail(this.email)
+    UsuarioServicie userService = new UsuarioServicie();
+    usuario =  userService.IniciarSesion(this);
+    return usuario;
     }
     
     

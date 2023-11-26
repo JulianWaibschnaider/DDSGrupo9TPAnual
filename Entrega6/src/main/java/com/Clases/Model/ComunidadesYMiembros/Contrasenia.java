@@ -26,6 +26,14 @@ public class Contrasenia {
 		this.setContrasenia(contra);
 	}
 
+	public void setIdContrasenia(int Id) {
+		this.idContrasenia = Id;
+	}
+	
+	public int getIdContrasenia() {
+		return idContrasenia;
+	}
+	
 	public Contrasenia() {
 	}
 
