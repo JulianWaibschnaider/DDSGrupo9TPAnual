@@ -7,7 +7,7 @@ import  main.java.com.Clases.Model.Shared.LlamadorDeAPI;
 import  main.java.com.Clases.Model.Shared.Mensajero;
 import main.java.com.Clases.Model.ComunidadesYMiembros.*;
 import main.java.com.Clases.Model.JpaServicies.UsuarioServicie;
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -43,12 +43,6 @@ public class Usuario {
             this.contrasenia = pass;
     }
     
-    public Usuario IniciarSesion() {
-    Usuario usuario = new Usuario();
-    UsuarioServicie userService = new UsuarioServicie();
-    usuario =  userService.IniciarSesion(this);
-    return usuario;
-    }
     
     
 }

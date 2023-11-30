@@ -1,5 +1,5 @@
 package  main.java.com.Clases.Model.ServiciosPublicos;
-import javax.persistence.*;
+import jakarta.persistence.*;
 //@Entity
 //@Table(name="Establecimiento")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

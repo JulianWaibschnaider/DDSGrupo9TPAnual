@@ -1,5 +1,5 @@
 package  main.java.com.Clases.Model.ServiciosPublicos;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
 
 @Entity

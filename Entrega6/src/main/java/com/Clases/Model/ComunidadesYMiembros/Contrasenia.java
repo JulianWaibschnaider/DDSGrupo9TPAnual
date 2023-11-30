@@ -11,7 +11,7 @@ import  main.java.com.Clases.Model.Shared.Mensajero;
 //vamos a utilizar un mecanismo de bloqueo o retraso exponencial. 
 //Es decir, cada vez que se produce un intento fallido de inicio de sesión, se aumenta el tiempo de espera antes del siguiente intento,
 //y este tiempo de espera se incrementa exponencialmente con cada intento fallido adicional.
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "Contrasenia")
 @Embeddable

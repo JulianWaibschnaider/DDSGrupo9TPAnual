@@ -1,5 +1,5 @@
 package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 import  main.java.com.Clases.Model.RankingsEInformes.Informe;
 

@@ -14,7 +14,7 @@ import  main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeIncid
 import  main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeRevisionManual;
 import  main.java.com.Clases.Model.Shared.Mensajero;
 import  main.java.com.Clases.Model.Servicios.RepositorioServicios;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Persona")

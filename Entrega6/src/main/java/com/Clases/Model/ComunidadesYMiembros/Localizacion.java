@@ -1,5 +1,5 @@
 package  main.java.com.Clases.Model.ComunidadesYMiembros;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="Localizacion")

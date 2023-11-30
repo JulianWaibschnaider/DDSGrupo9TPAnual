@@ -8,7 +8,7 @@ import java.util.Date;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.Observer;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Comunidad")

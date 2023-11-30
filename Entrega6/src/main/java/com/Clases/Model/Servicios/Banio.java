@@ -2,7 +2,7 @@ package  main.java.com.Clases.Model.Servicios;
 
 import java.util.List;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import  main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 @Entity

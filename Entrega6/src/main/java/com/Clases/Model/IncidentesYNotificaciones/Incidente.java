@@ -8,7 +8,7 @@ import  main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 import  main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
 import  main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
 import  main.java.com.Clases.Model.Servicios.Servicio;
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "Incidente")
 public class Incidente {

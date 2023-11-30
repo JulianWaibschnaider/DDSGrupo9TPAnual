@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepositorioContrasenia extends JpaRepository<Contrasenia,Long> {
-	Contrasenia findContraseniaById(int Id);
+	Contrasenia findContraseniaByIdContrasenia(int Id);
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import  main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 //@MappedSuperclass

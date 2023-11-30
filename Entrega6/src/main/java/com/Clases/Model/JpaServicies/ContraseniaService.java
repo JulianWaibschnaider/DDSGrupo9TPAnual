@@ -12,6 +12,6 @@ public class ContraseniaService {
 	private RepositorioContrasenia repocontra;
 
 	public Contrasenia ObtenerContraByUsuario(int id) {
-		return repocontra.findContraseniaById(id);
+		return repocontra.findContraseniaByIdContrasenia(id);
 	}
 }

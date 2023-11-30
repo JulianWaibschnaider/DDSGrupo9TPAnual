@@ -2,7 +2,7 @@ package  main.java.com.Clases.Model.ServiciosPublicos;
 
 import  main.java.com.Clases.Model.Servicios.Servicio;
 import java.util.List;
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Table(name="Estacion")
 

@@ -1,4 +1,5 @@
 package main.java.com.Clases.Model.JpaServicies;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,26 +11,31 @@ import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 
 @Service
 public class UsuarioServicie {
-@Autowired
-private RepositorioUsuarios repoUsuarios;
+	@Autowired
+	private RepositorioUsuarios repoUsuarios;
 
-public Usuario IniciarSesion(Usuario user) {
-	Boolean esUsuario = false;
-	if(!this.validarInicioSesion(user)) {
-		return null;
-	}
-	Usuario usuario = repoUsuarios.findUsuarioByEmail(user.getEmail());
-	if(usuario != null) {
-		ContraseniaService contraService = new ContraseniaService();
-		Contrasenia contra =  contraService.ObtenerContraByUsuario(usuario.getContrasenia().getIdContrasenia());
-		 esUsuario = contra.getContrasenia().equals(user.getContrasenia().getContrasenia());
-	}
-	if(esUsuario) {return usuario;}
-	return null;
-}
+	@Autowired
+	ContraseniaService contraService;
 
-public Boolean validarInicioSesion(Usuario user) {
-	return repoUsuarios.existUserByEmail(user.getEmail());
-}
+	public Usuario IniciarSesion(Usuario user) throws Exception {
+
+		Boolean esUsuario = false;
+		if (!this.validarInicioSesion(user)) {
+			throw new Exception("Error obteniendo el usuario");
+		}
+		Usuario usuario = repoUsuarios.findUsuarioByEmail(user.getEmail());
+		if (usuario != null) {
+			Contrasenia contra = contraService.ObtenerContraByUsuario(usuario.getContrasenia().getIdContrasenia());
+			esUsuario = contra.getContrasenia().equals(user.getContrasenia().getContrasenia());
+		}
+		if (esUsuario) {
+			return usuario;
+		}
+		throw new Exception("Error obteniendo el usuario");
+	}
+
+	public Boolean validarInicioSesion(Usuario user) {
+		return repoUsuarios.existsUsuarioByEmail(user.getEmail());
+	}
 
 }

@@ -1,7 +1,7 @@
 package  main.java.com.Clases.BD;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class HibernateUtil {
     private static final EntityManagerFactory sessionFactory = buildSessionFactory();

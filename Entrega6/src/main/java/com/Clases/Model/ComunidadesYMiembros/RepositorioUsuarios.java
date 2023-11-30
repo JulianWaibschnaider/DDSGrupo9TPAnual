@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public interface RepositorioUsuarios extends JpaRepository<Usuario,Long>{
 	
 	 Usuario findUsuarioByEmail(String email);
-	 Boolean existUserByEmail(String email);
+	 Boolean existsUsuarioByEmail(String email);
 }

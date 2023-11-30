@@ -2,7 +2,7 @@ package  main.java.com.Clases.Model.ServiciosPublicos;
 
 import  main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import  main.java.com.Clases.Model.Servicios.Servicio;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -3,7 +3,7 @@ package  main.java.com.Clases.Model.ServiciosPublicos;
 import java.util.List;
 import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
 import  main.java.com.Clases.Model.ServiciosPublicos.Estacion;
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "Linea")
 public class Linea/* extends Entidad*/ {
