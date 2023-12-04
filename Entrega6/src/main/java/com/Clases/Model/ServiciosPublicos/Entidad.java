@@ -17,20 +17,20 @@ public class Entidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEntidad;
     private String nombre;
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name = "ServiciosXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idServicio"))
-    private List<Servicio> servicios;
+    private List<Servicio> servicios;*/
     @OneToOne
     @JoinColumn(name = "idUbiacionGeografica")
     private UbicacionGeografica UbicacionGeografica;
-    @ManyToMany
+   /* @ManyToMany
     @JoinTable(name = "IncidentesXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idIncidente"))
-    private List<Incidente> incidentes;
+    private List<Incidente> incidentes;*/
     private float promedioCierreIncidentes;
     private int incidentesReportados;
 
     public int getIncidentesReportados() {
-        CalcularCantidadIncidentesReportados();
+      //  CalcularCantidadIncidentesReportados();
         return incidentesReportados;
     }
 
@@ -39,7 +39,7 @@ public class Entidad {
     }
 
     public float getPromedioCierreIncidentes() {
-        CalcularPromedioCierreIncidentes();
+     //   CalcularPromedioCierreIncidentes();
         return promedioCierreIncidentes;
     }
 
@@ -47,7 +47,7 @@ public class Entidad {
         this.promedioCierreIncidentes = promedio;
     }
 
-    public List<Incidente> getIncidentes() {
+   /* public List<Incidente> getIncidentes() {
         return incidentes;
     }
 
@@ -76,8 +76,8 @@ public class Entidad {
             }
         }
     }
-
-    public void CalcularPromedioCierreIncidentes() {
+*/
+    /*public void CalcularPromedioCierreIncidentes() {
         int suma = 0;
         int cantidad = 0;
         LocalDate finDeSemana = LocalDate.now().with(DayOfWeek.SUNDAY);
@@ -102,7 +102,7 @@ public class Entidad {
             }
         }
         this.setIncidentesReportados(cantidad);
-    }
+    }*/
 
     public String getNombre() {
         return nombre;
@@ -112,13 +112,13 @@ public class Entidad {
         this.nombre = nombre;
     }
 
-    public List<Servicio> getServicios() {
+   /* public List<Servicio> getServicios() {
         return servicios;
     }
 
     public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
-    }
+    }*/
 
     public UbicacionGeografica getUbicacionGeografica() {
         return UbicacionGeografica;

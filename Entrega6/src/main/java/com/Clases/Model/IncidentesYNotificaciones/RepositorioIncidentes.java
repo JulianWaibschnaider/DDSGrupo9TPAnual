@@ -1,22 +1,31 @@
 package  main.java.com.Clases.Model.IncidentesYNotificaciones;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
+
+import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 import  main.java.com.Clases.Model.Servicios.Servicio;
 import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 import  main.java.com.Clases.Model.Shared.Utils;
 //import javax.swing.Timer;
-
-public class RepositorioIncidentes {
+@Repository
+public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{
     public static List<Incidente> incidentes = new ArrayList<Incidente>();
-
+    @Modifying
+    @Transactional
+    @Query("update Incidente set estado = ?2 where id=?1")
+    int updateEstadoById(int id, boolean estado);
+    
     public static List<Incidente> getIncidentes() {
         return incidentes;
-    }
-
-    public void setIncidentes(List<Incidente> incidente) {
-        this.incidentes = incidente;
     }
 
     public static void addIncidentes(Incidente incidente) {

@@ -70,19 +70,18 @@ public class Incidente {
     }
 
     public void Abrir(String _email, String _observaciones, Servicio _servicio) {
-        this.id = RepositorioIncidentes.incidentes.size() + 1;
+       // this.id = RepositorioIncidentes.incidentes.size() + 1;
         this.persona = RepositorioPersonas.buscarPersona(_email);
-        this.observaciones = _observaciones;
+        this.setObservaciones(_observaciones);
         this.servicio = _servicio;
-        this.comunidades = persona.getComunidades();
+        //this.comunidades = persona.getComunidades();
         this.fechaApertura = LocalDateTime.now();
         this.fechaCierre = null;
         this.estado = true;// el estado del incidente es abierto
         this.servicio.setEnFuncionamiento(false); // ponemos el servicio fuera de servicio
-       
-        this.servicio.getEntidad().addIncidenteEntidad(this);
-        NotificarIncidente();
-        RepositorioIncidentes.addIncidentes(this);
+       // this.servicio.getEntidad().addIncidenteEntidad(this);
+       // NotificarIncidente();
+       // RepositorioIncidentes.addIncidentes(this);
     }
 
     public void Cerrar() {
@@ -90,7 +89,7 @@ public class Incidente {
         this.estado = false;
         this.fechaCierre = LocalDateTime.now();
         RepositorioIncidentes.UpdateIncidentes(this);
-        this.servicio.getEntidad().UpdateIncidenteEntidad(this);
+      //  this.servicio.getEntidad().UpdateIncidenteEntidad(this);
         this.setDiferenciaCierreApertura();
     }
 
@@ -107,6 +106,14 @@ public class Incidente {
             comunidad.NotificarIncidente(this);
         }
     }
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
 
 }
 

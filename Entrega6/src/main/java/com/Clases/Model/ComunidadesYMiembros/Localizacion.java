@@ -1,4 +1,6 @@
 package  main.java.com.Clases.Model.ComunidadesYMiembros;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Localizacion {
     private TipoLocalizacion tipoLocalizacion;
     @OneToOne
     @JoinColumn(name = "idLocalizacion")
+    @JsonBackReference
     private Localizacion localizacionSuperior;
     
     public String getNombre() {
