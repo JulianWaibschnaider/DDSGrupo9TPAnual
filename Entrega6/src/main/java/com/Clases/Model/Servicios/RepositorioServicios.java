@@ -3,7 +3,10 @@ package  main.java.com.Clases.Model.Servicios;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -15,5 +18,9 @@ import  main.java.com.Clases.Model.Shared.Utils;
 public interface RepositorioServicios extends JpaRepository<Servicio,Long> {
 
 	Servicio findServicioByIdServicio(int id_Servicio);
-
+	/*@Modifying
+	@Transactional
+    @Query("update Servicio set enFuncionamiento = ?2 where IdServicio=?1")
+	int UpdateEnFuncionamientoByIdServicio(int idServicio, boolean estado);
+	*/
 }

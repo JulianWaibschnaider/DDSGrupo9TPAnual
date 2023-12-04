@@ -88,7 +88,7 @@ public class Incidente {
         this.servicio.setEnFuncionamiento(true);// ponemos el servicio en funcionamiento nuevamente
         this.estado = false;
         this.fechaCierre = LocalDateTime.now();
-        RepositorioIncidentes.UpdateIncidentes(this);
+        //RepositorioIncidentes.UpdateIncidentes(this);
       //  this.servicio.getEntidad().UpdateIncidenteEntidad(this);
         this.setDiferenciaCierreApertura();
     }

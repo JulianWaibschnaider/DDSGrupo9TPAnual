@@ -35,7 +35,7 @@ public class IncidenteController {
 	}
 
 	@PostMapping(path = "/CerrarIncidente")
-	public ResponseEntity<Boolean> CerrarIncidente(@RequestBody String bodyJson) {
+	public ResponseEntity<Incidente> CerrarIncidente(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		int IdIncidente = jsonObj.getInt("IdIncidente");
 		try {

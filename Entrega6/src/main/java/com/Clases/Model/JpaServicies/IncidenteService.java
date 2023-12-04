@@ -21,15 +21,19 @@ public class IncidenteService {
 		Servicio servicio = repoServicio.findServicioByIdServicio(idServicio);
 		incidente.Abrir(_email, _observaciones, servicio);
 		Incidente inci = repoIncidentes.save(incidente);
-		if(inci != null) {
-			return inci;			
+		if (inci != null) {
+			return inci;
 		}
 		throw new Exception("Error insertando el incidente");
 	}
-	
-	public Boolean CerrarIncidente(int idIncidente) {
-		 return (repoIncidentes.updateEstadoById(idIncidente, false)>=1);
-		 //falta poner el servicio en funcionamiento
+
+	public Incidente CerrarIncidente(int idIncidente) {
+		Incidente incidente = repoIncidentes.findIncidenteByid(idIncidente);
+		//if (repoIncidentes.updateEstadoById(idIncidente, false)>=1) {
+		// }
+		incidente.Cerrar();
+		repoIncidentes.save(incidente);
+		return incidente; // falta poner el servicio en funcionamiento
 	}
 
 }

@@ -24,6 +24,8 @@ public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{
     @Query("update Incidente set estado = ?2 where id=?1")
     int updateEstadoById(int id, boolean estado);
     
+    Incidente findIncidenteByid(int id);
+    
     public static List<Incidente> getIncidentes() {
         return incidentes;
     }
