@@ -25,6 +25,8 @@ public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{
     int updateEstadoById(int id, boolean estado);
     
     Incidente findIncidenteByid(int id);
+	List<Incidente> findAllIncidenteByEstado(boolean estado);
+
     
     public static List<Incidente> getIncidentes() {
         return incidentes;
