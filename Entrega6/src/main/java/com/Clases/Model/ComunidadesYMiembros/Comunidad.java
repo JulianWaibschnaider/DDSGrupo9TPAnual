@@ -18,14 +18,17 @@ public class Comunidad implements Observer {
 	private int idComunidad;
 	private String nombre;
 
-	@ManyToMany(mappedBy = "comunidades")
+	@ManyToMany
+	@JoinTable(name = "PersonasObservadorasXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idPersona"))
 	private List<Persona> usuariosObservadores;
-	@ManyToMany(mappedBy = "comunidades")
+	@ManyToMany
+	@JoinTable(name = "PersonasAfectadasXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idPersona"))
 	private List<Persona> usuariosAfectados;
-	@ManyToMany(mappedBy = "comunidades")
+	@ManyToMany
+	@JoinTable(name = "PersonasAdminXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idPersona"))
 	private List<Persona> administradoresComunidad;
-	@ManyToMany(mappedBy = "comunidades")
-	private List<Persona> miembrosComunidad;
+	/*@ManyToMany(mappedBy = "comunidades")
+	private List<Persona> miembrosComunidad;*/
 	@ManyToMany
 	@JoinTable(name = "ServiciosXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idServicio"))
 	private List<Servicio> servicios;
@@ -57,12 +60,32 @@ public class Comunidad implements Observer {
 		return usuariosAfectados;
 	}
 
+	public Boolean ExisteUsuarioAfectado(int idPersona) {
+		for(Persona persona : this.usuariosAfectados) {
+			return persona.getIdPersona() == idPersona; 
+		}
+		return false;
+	}
+	
+	
+	public Boolean ExisteUsuarioObservador(int idPersona) {
+		for(Persona persona : this.usuariosObservadores) {
+			return persona.getIdPersona() == idPersona; 
+		}
+		return false;
+	}
 	public void setUsuariosAfectados(List<Persona> usuariosAfectados) {
 		this.usuariosAfectados = usuariosAfectados;
 	}
 
 	public void addUsuariosAfectados(Persona persona) {
 		this.usuariosAfectados.add(persona);
+	}
+	public void deleteUsuariosAfectados(Persona persona) {
+		this.usuariosAfectados.remove(persona);
+	}
+	public void deleteUsuariosObservadores(Persona persona) {
+		this.usuariosObservadores.remove(persona);
 	}
 
 	public List<Persona> getAdministradoresComunidad() {
@@ -73,13 +96,13 @@ public class Comunidad implements Observer {
 		this.administradoresComunidad = administradoresComunidad;
 	}
 
-	public List<Persona> getMiembrosComunidad() {
+	/*public List<Persona> getMiembrosComunidad() {
 		return miembrosComunidad;
 	}
 
 	public void setMiembrosComunidad(List<Persona> miembrosComunidad) {
 		this.miembrosComunidad = miembrosComunidad;
-	}
+	}*/
 
 	public List<Servicio> getServicios() {
 		return servicios;

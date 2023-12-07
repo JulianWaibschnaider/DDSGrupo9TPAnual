@@ -15,10 +15,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
     private String email;
-    @OneToOne
-	@JoinColumn(name = "idUbicacionGeografica")
-    @Embedded
-    private UbicacionGeografica localizacionActual;
+
 	@OneToOne
 	@JoinColumn(name = "idContrasenia")
 	@Embedded

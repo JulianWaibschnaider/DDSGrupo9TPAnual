@@ -4,7 +4,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "Organizacion")
-
 public class Organizacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,19 +1,19 @@
-package  main.java.com.Clases.Model.ComunidadesYMiembros;
+package main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.time.LocalDate;
 import java.util.List;
-import  main.java.com.Clases.Model.Servicios.Servicio;
-import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
-import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
+import main.java.com.Clases.Model.Servicios.Servicio;
+import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
+import main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 
 import java.util.Date;
-import  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
-import  main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import  main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
-import  main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeIncidente;
-import  main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeRevisionManual;
-import  main.java.com.Clases.Model.Shared.Mensajero;
-import  main.java.com.Clases.Model.Servicios.RepositorioServicios;
+import main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeIncidente;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeRevisionManual;
+import main.java.com.Clases.Model.Shared.Mensajero;
+import main.java.com.Clases.Model.Servicios.RepositorioServicios;
 import jakarta.persistence.*;
 
 @Entity
@@ -50,19 +50,33 @@ public class Persona {
 	@JoinTable(name = "IncidentesXPersona", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idIncidente"))
 	private List<Incidente> incidentes;
 
-	 @Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.ORDINAL)
 	private TipoMedioComunicacion medioDeComunicacionElegido;
-	
-	//@OneToMany
-	//@JoinTable(name = "HorariosDeDisponibilidadXPersona", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "Horarios"))
-	 @ElementCollection
-	 @CollectionTable(name = "horarios_de_disponibilidad", joinColumns = @JoinColumn(name = "idPersona"))
-	 @Column(name = "horario_disponibilidad")
-	 private List<LocalDate> horariosDeDisponibilidad;// son horarios (momentos) especificos en los que se le puede
-															// notificar, NO en un rango
+
+	private Boolean EsAfectado;
+	// @JoinTable(name = "HorariosDeDisponibilidadXPersona", joinColumns =
+	// @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name =
+	// "Horarios"))
+	@ElementCollection
+	@CollectionTable(name = "horarios_de_disponibilidad", joinColumns = @JoinColumn(name = "idPersona"))
+	@Column(name = "horario_disponibilidad")
+	private List<LocalDate> horariosDeDisponibilidad;// son horarios (momentos) especificos en los que se le puede
+														// notificar, NO en un rango
 	@ManyToMany
 	@JoinTable(name = "EntidadesPrestadorasXPersona", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idEntidadPrestadora"))
 	private List<EntidadPrestadora> recibirNotificacionesDe;
+
+	public void setEsAfectado(Comunidad comunidad) {
+		this.EsAfectado = comunidad.ExisteUsuarioAfectado(idPersona);
+	}
+
+	public Boolean getEsAfectado() {
+		return EsAfectado;
+	}
+
+	public int getIdPersona() {
+		return idPersona;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -135,7 +149,8 @@ public class Persona {
 	public void setLocalizacionActual(UbicacionGeografica localizacionActual) {
 		this.localizacionActual = localizacionActual;
 		NotificarCercaniaAIncidente();
-		// si esta cerca del servicio de un incidente, se le notifica para que vaya a revisarlo manualmente
+		// si esta cerca del servicio de un incidente, se le notifica para que vaya a
+		// revisarlo manualmente
 	}
 
 	public List<Incidente> getIncidentes() {
@@ -173,10 +188,16 @@ public class Persona {
 	public void definirRolEn(Comunidad comunidad, Boolean rol) {
 		// true es usuario afectado y false es usuario observador
 		if (rol) {
-			comunidad.addUsuariosAfectados(this);
+			if (!comunidad.ExisteUsuarioAfectado(idPersona)) {
+				comunidad.addUsuariosAfectados(this);
+				comunidad.deleteUsuariosObservadores(this);
+			}
 		} else {
-			comunidad.addUsuariosObservadores(this);
+			if (!comunidad.ExisteUsuarioObservador(idPersona))
+				comunidad.addUsuariosObservadores(this);
+			comunidad.deleteUsuariosAfectados(this);
 		}
+		this.setEsAfectado(comunidad);
 	}
 
 	public void AbrirIncidente(Servicio _servicio) {
