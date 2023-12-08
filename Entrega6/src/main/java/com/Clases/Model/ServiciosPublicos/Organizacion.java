@@ -2,7 +2,7 @@ package  main.java.com.Clases.Model.ServiciosPublicos;
 import jakarta.persistence.*;
 import java.util.List;
 
-@Entity
+/*@Entity
 @Table(name = "Organizacion")
 public class Organizacion {
     @Id
@@ -21,3 +21,4 @@ public class Organizacion {
     )
     private List<Sucursal> sucursales;
 }
+//FUERA*/

@@ -19,16 +19,19 @@ public class Entidad {
     private String nombre;
     /*@ManyToMany
     @JoinTable(name = "ServiciosXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idServicio"))
-    private List<Servicio> servicios;*/
+    private List<Servicio> servicios;
+    @ManyToMany
+    @JoinTable(name = "IncidentesXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idIncidente"))
+    private List<Incidente> incidentes;*/
     @OneToOne
     @JoinColumn(name = "idUbiacionGeografica")
     private UbicacionGeografica UbicacionGeografica;
-   /* @ManyToMany
-    @JoinTable(name = "IncidentesXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idIncidente"))
-    private List<Incidente> incidentes;*/
     private float promedioCierreIncidentes;
     private int incidentesReportados;
-
+    @OneToOne
+    private Linea linea;
+    @OneToOne
+    private Estacion estacion;
     public int getIncidentesReportados() {
       //  CalcularCantidadIncidentesReportados();
         return incidentesReportados;
@@ -40,14 +43,14 @@ public class Entidad {
 
     public float getPromedioCierreIncidentes() {
      //   CalcularPromedioCierreIncidentes();
-        return promedioCierreIncidentes;
+		return promedioCierreIncidentes;
     }
 
     public void setPromedioCierreIncidentes(float promedio) {
         this.promedioCierreIncidentes = promedio;
     }
 
-   /* public List<Incidente> getIncidentes() {
+ /*   public List<Incidente> getIncidentes() {
         return incidentes;
     }
 
@@ -76,7 +79,7 @@ public class Entidad {
             }
         }
     }
-*/
+
     /*public void CalcularPromedioCierreIncidentes() {
         int suma = 0;
         int cantidad = 0;
@@ -127,5 +130,22 @@ public class Entidad {
     public void setUbicacionGeografica(UbicacionGeografica ubicacionGeografica) {
         UbicacionGeografica = ubicacionGeografica;
     }
+
+	public Linea getLinea() {
+		return linea;
+	}
+
+	public void setLinea(Linea linea) {
+		this.linea = linea;
+	}
+
+	public Estacion getEstacion() {
+		return estacion;
+	}
+
+	public void setEstacion(Estacion estacion) {
+		this.estacion = estacion;
+	}
+
 
 }

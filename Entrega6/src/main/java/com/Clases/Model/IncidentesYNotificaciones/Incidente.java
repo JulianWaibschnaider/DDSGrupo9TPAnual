@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
+import main.java.com.Clases.Model.JpaServicies.PersonaService;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
 import main.java.com.Clases.Model.Servicios.Servicio;
 import jakarta.persistence.*;
@@ -27,8 +28,8 @@ public class Incidente {
 	@JoinColumn(name = "idServicio")
 	private Servicio servicio;
 	private Boolean estado;// true es abierto y false es cerrado
-	@ManyToMany(mappedBy = "incidentes")
-	private List<Comunidad> comunidades;
+	//@ManyToMany(mappedBy = "incidentes")
+	//private List<Comunidad> comunidades;
 	private LocalDateTime fechaApertura;
 	private LocalDateTime fechaCierre;
 	private long diferenciaCierreApertura;
@@ -73,13 +74,10 @@ public class Incidente {
 		this.servicio = servicio;
 	}
 
-	@Transient
-	@Autowired
-	private RepositorioPersonas repoPersonas;
 
-	public void Abrir(String _email, String _observaciones, Servicio _servicio) {
+	public void Abrir(String _email, String _observaciones, Servicio _servicio, Persona persona) {
 		// this.id = RepositorioIncidentes.incidentes.size() + 1;
-		this.persona = repoPersonas.findPersonaByEmail(_email);
+		this.persona = persona;
 		this.setObservaciones(_observaciones);
 		this.servicio = _servicio;
 		// this.comunidades = persona.getComunidades();
@@ -87,7 +85,7 @@ public class Incidente {
 		this.fechaCierre = null;
 		this.estado = true;// el estado del incidente es abierto
 		this.servicio.setEnFuncionamiento(false); // ponemos el servicio fuera de servicio
-		// this.servicio.getEntidad().addIncidenteEntidad(this);
+	//	this.servicio.getEntidad().addIncidenteEntidad(this);
 		// NotificarIncidente();
 		// RepositorioIncidentes.addIncidentes(this);
 	}
@@ -102,19 +100,19 @@ public class Incidente {
 	}
 
 	public List<Comunidad> getComunidades() {
-		return comunidades;
+		return null;//comunidades;
 	}
 
 	public Boolean getEstado() {
 		return estado;
 	}
 
-	public void NotificarIncidente() {
+	/*public void NotificarIncidente() {
 		for (Comunidad comunidad : comunidades) {
 			comunidad.NotificarIncidente(this);
 		}
 	}
-
+*/
 	public String getObservaciones() {
 		return observaciones;
 	}

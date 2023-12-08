@@ -27,5 +27,9 @@ public class PersonaService {
 		repoPersonas.save(persona);
 		return persona;
 	}
+	
+	public Persona BuscarPersonaPorEmail(String email) {
+		return repoPersonas.findPersonaByEmail(email);
+	}
 
 }

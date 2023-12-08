@@ -12,10 +12,10 @@ public class Localizacion {
     private String nombre;
    @Enumerated(EnumType.STRING)
     private TipoLocalizacion tipoLocalizacion;
-    @OneToOne
+   /* @OneToOne
     @JoinColumn(name = "idLocalizacion")
     @JsonBackReference
-    private Localizacion localizacionSuperior;
+    private Localizacion localizacionSuperior;*/
     
     public String getNombre() {
         return nombre;
@@ -29,10 +29,10 @@ public class Localizacion {
     public void setTipoLocalizacion(TipoLocalizacion tipoLocalizacion) {
         this.tipoLocalizacion = tipoLocalizacion;
     }
-    public Localizacion getLocalizacionSuperior() {
+   /* public Localizacion getLocalizacionSuperior() {
         return localizacionSuperior;
     }
     public void setLocalizacionSuperior(Localizacion localizacionSuperior) {
         this.localizacionSuperior = localizacionSuperior;
-    }
+    }*/
 }

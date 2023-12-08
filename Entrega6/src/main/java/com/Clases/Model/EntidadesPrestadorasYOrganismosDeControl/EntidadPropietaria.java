@@ -10,15 +10,15 @@ public class EntidadPropietaria {
     private int idEntidadPropietaria;
     private String nombre;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "idEntidadPrestadora")
-    private EntidadPropietaria entidadPrestadora;
+    private EntidadPropietaria entidadPrestadora;*/
 
-    @OneToOne
-    @JoinColumn(name = "idOrganismoDeControl")
-    private OrganismoDeControl organismoDeControl;
+    //@OneToOne
+   // @JoinColumn(name = "idOrganismoDeControl")
+   // private OrganismoDeControl organismoDeControl;
 
-    @ManyToMany(mappedBy = "entidadesPropietarias")
+   // @ManyToMany(mappedBy = "entidadesPropietarias")
     
     public String getNombre() {
         return nombre;
@@ -26,7 +26,7 @@ public class EntidadPropietaria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public EntidadPropietaria getEntidadPrestadora() {
+  /*  public EntidadPropietaria getEntidadPrestadora() {
         return entidadPrestadora;
     }
     public void setEntidadPrestadora(EntidadPropietaria entidadPrestadora) {
@@ -37,5 +37,5 @@ public class EntidadPropietaria {
     }
     public void setOrganismoDeControl(OrganismoDeControl organismoDeControl) {
         this.organismoDeControl = organismoDeControl;
-    }
+    }*/
 }

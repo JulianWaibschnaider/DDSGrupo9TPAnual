@@ -67,12 +67,12 @@ public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{
     }
 
 
-    public static void EnviarIncidentesNoEnviados() {
+   /* public static void EnviarIncidentesNoEnviados() {
        //aca va el timer que se ejecuta cada 30 min 
         for (Incidente incidentenoEnviado : incidentesNoEnviados) {
             incidentenoEnviado.NotificarIncidente();
         }
-    }
+    }*/
 
     public static Incidente BuscarLocalizacionCercana(UbicacionGeografica ubicacion) {
         // la que llega por parametro es la ubicacion actual de la persona

@@ -3,6 +3,8 @@ package main.java.com.Clases.Model.JpaServicies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
+import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
 import main.java.com.Clases.Model.Servicios.RepositorioServicios;
@@ -14,12 +16,15 @@ public class IncidenteService {
 	private RepositorioIncidentes repoIncidentes;
 	@Autowired
 	private RepositorioServicios repoServicio;
+	@Autowired
+	private PersonaService personaService;
 
 	public Incidente AbrirIncidente(String _email, String _observaciones, int idServicio) throws Exception {
 
 		Incidente incidente = new Incidente();
 		Servicio servicio = repoServicio.findServicioByIdServicio(idServicio);
-		incidente.Abrir(_email, _observaciones, servicio);
+		Persona persona = personaService.BuscarPersonaPorEmail(_email);
+		incidente.Abrir(_email, _observaciones, servicio, persona);
 		Incidente inci = repoIncidentes.save(incidente);
 		if (inci != null) {
 			return inci;

@@ -56,19 +56,19 @@ public class LlamadorDeAPI {
                       JSONObject provincia = localidad.optJSONObject("provincia");
                       locaProvincia.setNombre(provincia.optString("nombre", "N/A"));
                       locaProvincia.setTipoLocalizacion(TipoLocalizacion.PROVINCIA);
-                      locaProvincia.setLocalizacionSuperior(null);
+                    //  locaProvincia.setLocalizacionSuperior(null);
                       
                       Localizacion locaDepartamento = new Localizacion();                 
                       JSONObject departamento = localidad.optJSONObject("departamento");
                       locaDepartamento.setNombre(departamento.optString("nombre", "N/A"));
                       locaDepartamento.setTipoLocalizacion(TipoLocalizacion.DEPARTAMENTO);
-                      locaDepartamento.setLocalizacionSuperior(locaProvincia);
+                     // locaDepartamento.setLocalizacionSuperior(locaProvincia);
 
                       Localizacion locaMunicipio = new Localizacion();
                       JSONObject municipio = localidad.optJSONObject("municipio");
                       locaMunicipio.setNombre(municipio.optString("nombre", "N/A"));
                       locaMunicipio.setTipoLocalizacion(TipoLocalizacion.MUNICIPIO);
-                      locaMunicipio.setLocalizacionSuperior(locaDepartamento);
+                   //   locaMunicipio.setLocalizacionSuperior(locaDepartamento);
 
                       repoLocalizaciones.addLocalizaciones(locaMunicipio);                     
                   }

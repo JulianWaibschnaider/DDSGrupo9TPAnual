@@ -52,8 +52,8 @@ public class Persona {
 
 	@Enumerated(EnumType.ORDINAL)
 	private TipoMedioComunicacion medioDeComunicacionElegido;
-
-	private Boolean EsAfectado;
+	
+	private Boolean EsAfectado = false;
 	// @JoinTable(name = "HorariosDeDisponibilidadXPersona", joinColumns =
 	// @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name =
 	// "Horarios"))
@@ -66,9 +66,9 @@ public class Persona {
 	@JoinTable(name = "EntidadesPrestadorasXPersona", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idEntidadPrestadora"))
 	private List<EntidadPrestadora> recibirNotificacionesDe;
 
-	public void setEsAfectado(Comunidad comunidad) {
+/*	public void setEsAfectado(Comunidad comunidad) {
 		this.EsAfectado = comunidad.ExisteUsuarioAfectado(idPersona);
-	}
+	}*/
 
 	public Boolean getEsAfectado() {
 		return EsAfectado;
@@ -191,19 +191,21 @@ public class Persona {
 			if (!comunidad.ExisteUsuarioAfectado(idPersona)) {
 				comunidad.addUsuariosAfectados(this);
 				comunidad.deleteUsuariosObservadores(this);
+				this.EsAfectado=true;
 			}
 		} else {
 			if (!comunidad.ExisteUsuarioObservador(idPersona))
 				comunidad.addUsuariosObservadores(this);
 			comunidad.deleteUsuariosAfectados(this);
+			this.EsAfectado=false;
 		}
-		this.setEsAfectado(comunidad);
+		
 	}
 
 	public void AbrirIncidente(Servicio _servicio) {
 		Incidente incidente = new Incidente();
 		String _observaciones = Mensajero.IngresarMensaje("Ingrese las observaciones del incidente:");
-		incidente.Abrir(this.getEmail(), _observaciones, _servicio);
+		incidente.Abrir(this.getEmail(), _observaciones, _servicio,this);
 		this.incidentes.add(incidente);
 
 		for (Comunidad comunidad : comunidades) {

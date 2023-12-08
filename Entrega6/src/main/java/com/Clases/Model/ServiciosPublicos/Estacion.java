@@ -12,7 +12,14 @@ public class Estacion  /*extends Entidad*/{
     
     private int idEstacion;
     
-    @ManyToMany
+   private String nombre;
+  /*  @ManyToMany
     @JoinTable(name = "estacion_linea", joinColumns = @JoinColumn(name = "idEstacion"), inverseJoinColumns = @JoinColumn(name = "idLinea"))
-    private List<Linea> lineas;
+    private List<Linea> lineas;*/
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -25,18 +27,52 @@ public class RankingDeIncidentes{
     private int idRankingDeIncidentes;
 
     private transient Rankear estrategia;
-    @OneToMany  
-    @JoinColumn(name = "idEntidad")
-    private List<Entidad> entidades;
+
+    private transient List<Entidad> entidades;
 
     public List<Entidad> Rankear(){
         entidades = estrategia.Execute();
         return entidades;
     }
 
+	@ManyToMany
+	@JoinTable(name = "rankingMayorTiempoPromedio", joinColumns = @JoinColumn(name = "idRankingDeIncidentes"), inverseJoinColumns = @JoinColumn(name = "IdEntidad"))
+    private List<Entidad> rankingMayorTiempoPromedio;
+	@ManyToMany
+	@JoinTable(name = "rankingMayorGradoDeImpacto", joinColumns = @JoinColumn(name = "idRankingDeIncidentes"), inverseJoinColumns = @JoinColumn(name = "IdEntidad"))
+    private List<Entidad> rankingMayorGradoDeImpacto;
+	@ManyToMany
+	@JoinTable(name = "rankingMayorCantidadIncidentes", joinColumns = @JoinColumn(name = "idRankingDeIncidentes"), inverseJoinColumns = @JoinColumn(name = "IdEntidad"))
+    private List<Entidad> rankingMayorCantidadIncidentes;
+    
+    
     public void setEstrategia(Rankear estrategia){
         this.estrategia = estrategia;
     }
 
-     private LocalDate fecha = LocalDate.now();
+     public List<Entidad> getRankingMayorTiempoPromedio() {
+		return rankingMayorTiempoPromedio;
+	}
+
+	public void setRankingMayorTiempoPromedio(List<Entidad> rankingMayorTiempoPromedio) {
+		this.rankingMayorTiempoPromedio = rankingMayorTiempoPromedio;
+	}
+
+	public List<Entidad> getRankingMayorGradoDeImpacto() {
+		return rankingMayorGradoDeImpacto;
+	}
+
+	public void setRankingMayorGradoDeImpacto(List<Entidad> rankingMayorGradoDeImpacto) {
+		this.rankingMayorGradoDeImpacto = rankingMayorGradoDeImpacto;
+	}
+
+	public List<Entidad> getRankingMayorCantidadIncidentes() {
+		return rankingMayorCantidadIncidentes;
+	}
+
+	public void setRankingMayorCantidadIncidentes(List<Entidad> rankingMayorCantidadIncidentes) {
+		this.rankingMayorCantidadIncidentes = rankingMayorCantidadIncidentes;
+	}
+
+	private LocalDate fecha = LocalDate.now();
 }
