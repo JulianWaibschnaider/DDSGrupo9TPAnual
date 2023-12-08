@@ -47,4 +47,15 @@ public class IncidenteController {
 
 	}
 
+	@GetMapping(path = "/ObtenerIncidentePorEstado")
+	public ResponseEntity<List<Incidente>> ObtenerIncidentePorEstado(@RequestBody String bodyJson) {
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
+		try {
+			return ResponseEntity.ok().body(incidenteService.BuscarIncidentePorEstado(estadoIncidente));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
 }
