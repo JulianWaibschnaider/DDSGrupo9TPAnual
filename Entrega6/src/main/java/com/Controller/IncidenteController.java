@@ -1,4 +1,4 @@
-package main.java.com.Controller;
+package com.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,13 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
 import org.json.JSONObject;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import main.java.com.Clases.Model.JpaServicies.IncidenteService;
+import com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import com.Clases.Model.JpaServicies.IncidenteService;
 import java.util.List;
 
 @Controller

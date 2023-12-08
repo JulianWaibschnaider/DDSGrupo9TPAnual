@@ -1,13 +1,13 @@
-package main.java.com.Clases.Model.JpaServicies;
+package com.Clases.Model.JpaServicies;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.auth0.json.mgmt.users.User;
 
-import main.java.com.Clases.Model.ComunidadesYMiembros.Contrasenia;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioUsuarios;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
+import com.Clases.Model.ComunidadesYMiembros.Contrasenia;
+import com.Clases.Model.ComunidadesYMiembros.RepositorioUsuarios;
+import com.Clases.Model.ComunidadesYMiembros.Usuario;
 
 @Service
 public class UsuarioServicie {

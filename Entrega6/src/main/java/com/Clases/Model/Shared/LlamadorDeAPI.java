@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.Shared;
+package  com.Clases.Model.Shared;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,10 +14,10 @@ import com.auth0.client.auth.AuthAPI;
 import com.auth0.json.auth.TokenHolder;
 import com.auth0.net.Request;
 
-import  main.java.com.Clases.Model.Auth0.Auth0Config;
-import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
-import  main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioLocalizaciones;
-import  main.java.com.Clases.Model.ComunidadesYMiembros.TipoLocalizacion;
+import  com.Clases.Model.Auth0.Auth0Config;
+import  com.Clases.Model.ComunidadesYMiembros.Localizacion;
+import  com.Clases.Model.ComunidadesYMiembros.RepositorioLocalizaciones;
+import  com.Clases.Model.ComunidadesYMiembros.TipoLocalizacion;
 
 public class LlamadorDeAPI {
 

@@ -1,6 +1,6 @@
-package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
+package  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 import jakarta.persistence.*;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
+import com.Clases.Model.ComunidadesYMiembros.Usuario;
 @Entity
 @Table(name="PersonaEncargada")
 

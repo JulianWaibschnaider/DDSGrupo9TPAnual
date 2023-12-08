@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.Shared;
+package  com.Clases.Model.Shared;
 
 import java.io.FileInputStream;
 import java.io.IOException;

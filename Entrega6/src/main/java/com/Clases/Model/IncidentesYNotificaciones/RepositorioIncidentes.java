@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.IncidentesYNotificaciones;
+package  com.Clases.Model.IncidentesYNotificaciones;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
-import  main.java.com.Clases.Model.Servicios.Servicio;
-import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
-import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
-import  main.java.com.Clases.Model.Shared.Utils;
+import com.Clases.Model.ComunidadesYMiembros.Usuario;
+import  com.Clases.Model.Servicios.Servicio;
+import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
+import  com.Clases.Model.Shared.Utils;
 //import javax.swing.Timer;
 @Repository
 public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{

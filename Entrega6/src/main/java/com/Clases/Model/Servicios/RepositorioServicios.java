@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.Servicios;
+package  com.Clases.Model.Servicios;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
-import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
-import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
-import  main.java.com.Clases.Model.Shared.Utils;
+import com.Clases.Model.ComunidadesYMiembros.Usuario;
+import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
+import  com.Clases.Model.Shared.Utils;
 @Repository
 public interface RepositorioServicios extends JpaRepository<Servicio,Long> {
 

@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.ComunidadesYMiembros;
+package  com.Clases.Model.ComunidadesYMiembros;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 
-import  main.java.com.Clases.Model.Shared.Mensajero;
+import  com.Clases.Model.Shared.Mensajero;
 //Para limitar o incrementar el tiempo de respuesta de cada intento fallido de inicio de sesión,
 //vamos a utilizar un mecanismo de bloqueo o retraso exponencial. 
 //Es decir, cada vez que se produce un intento fallido de inicio de sesión, se aumenta el tiempo de espera antes del siguiente intento,

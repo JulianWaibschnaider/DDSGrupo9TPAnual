@@ -1,4 +1,4 @@
-package main.java.com.Controller;
+package com.Controller;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -17,10 +17,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;  
 import java.util.Date; 
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import main.java.com.Clases.Model.JpaServicies.IncidenteService;
-import main.java.com.Clases.Model.JpaServicies.RankingService;
-import main.java.com.Clases.Model.RankingsEInformes.RankingDeIncidentes;
+import com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import com.Clases.Model.JpaServicies.IncidenteService;
+import com.Clases.Model.JpaServicies.RankingService;
+import com.Clases.Model.RankingsEInformes.RankingDeIncidentes;
 
 @Controller
 @CrossOrigin

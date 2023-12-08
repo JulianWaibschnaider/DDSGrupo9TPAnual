@@ -1,16 +1,16 @@
-package main.java.com.Clases.Model.JpaServicies;
+package com.Clases.Model.JpaServicies;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
-import main.java.com.Clases.Model.Servicios.RepositorioServicios;
-import main.java.com.Clases.Model.Servicios.Servicio;
+import com.Clases.Model.ComunidadesYMiembros.Persona;
+import com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
+import com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
+import com.Clases.Model.Servicios.RepositorioServicios;
+import com.Clases.Model.Servicios.Servicio;
 
 @Service
 public class IncidenteService {

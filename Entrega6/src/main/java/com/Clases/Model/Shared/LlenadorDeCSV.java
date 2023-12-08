@@ -1,13 +1,13 @@
-package  main.java.com.Clases.Model.Shared;
+package  com.Clases.Model.Shared;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
-import  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
-import  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.OrganismoDeControl;
-import  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.RepositorioEntidadesPrestadoras;
+import  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
+import  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.OrganismoDeControl;
+import  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.RepositorioEntidadesPrestadoras;
 public class LlenadorDeCSV {
 
     public static void llenarCSVEntidadesYOrganismos(){

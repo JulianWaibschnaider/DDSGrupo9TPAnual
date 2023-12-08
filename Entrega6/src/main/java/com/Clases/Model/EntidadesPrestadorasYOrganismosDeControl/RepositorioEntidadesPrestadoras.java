@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
+package  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package main.java.com.Clases.Model.JpaServicies;
+package com.Clases.Model.JpaServicies;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioComunidad;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
+import com.Clases.Model.ComunidadesYMiembros.Comunidad;
+import com.Clases.Model.ComunidadesYMiembros.Persona;
+import com.Clases.Model.ComunidadesYMiembros.RepositorioComunidad;
+import com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
 
 @Service
 public class PersonaService {

@@ -1,8 +1,8 @@
-package  main.java.com.Clases.Model.ServiciosPublicos;
+package  com.Clases.Model.ServiciosPublicos;
 
 import java.util.List;
-import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
-import  main.java.com.Clases.Model.ServiciosPublicos.Estacion;
+import  com.Clases.Model.ComunidadesYMiembros.Localizacion;
+import  com.Clases.Model.ServiciosPublicos.Estacion;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Linea")

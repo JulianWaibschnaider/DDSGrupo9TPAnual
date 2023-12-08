@@ -1,4 +1,4 @@
-package main.java.com.Clases.Model.IncidentesYNotificaciones;
+package com.Clases.Model.IncidentesYNotificaciones;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -7,11 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
-import main.java.com.Clases.Model.JpaServicies.PersonaService;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
-import main.java.com.Clases.Model.Servicios.Servicio;
+import com.Clases.Model.ComunidadesYMiembros.Persona;
+import com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
+import com.Clases.Model.JpaServicies.PersonaService;
+import com.Clases.Model.ComunidadesYMiembros.Comunidad;
+import com.Clases.Model.Servicios.Servicio;
 import jakarta.persistence.*;
 
 @Entity

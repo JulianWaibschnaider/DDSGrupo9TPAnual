@@ -1,4 +1,4 @@
-package  main.java.com.Clases.Model.ComunidadesYMiembros;
+package  com.Clases.Model.ComunidadesYMiembros;
 
 
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import com.Clases.Model.IncidentesYNotificaciones.Incidente;
 
 import java.util.ArrayList;
 

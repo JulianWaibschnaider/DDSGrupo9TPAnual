@@ -1,8 +1,8 @@
-package  main.java.com.Clases.Model.ServiciosPublicos;
+package  com.Clases.Model.ServiciosPublicos;
 
 import java.util.List;
 import java.util.ArrayList;
-import  main.java.com.Clases.Model.Shared.Utils;
+import  com.Clases.Model.Shared.Utils;
 
 public class RepositorioEntidades {
     
