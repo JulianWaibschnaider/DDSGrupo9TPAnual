@@ -48,12 +48,14 @@ public class IncidenteController {
 
 	}
 
-	@GetMapping(path = "/ObtenerIncidentePorEstado")
-	public ResponseEntity<List<Incidente>> ObtenerIncidentePorEstado(@RequestBody String bodyJson) {
+	@PostMapping("/ObtenerIncidentePorEstado")
+	public String ObtenerIncidentePorEstado(@RequestBody String bodyJson, Model model) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
 		try {
-			return ResponseEntity.ok().body(incidenteService.BuscarIncidentePorEstado(estadoIncidente));
+			List<Incidente> incidentes = incidenteService.BuscarIncidentePorEstado(estadoIncidente);
+			model.addAttribute("incidentes", incidentes);
+			return "incidenteList"; // This should match the Thymeleaf template name
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());

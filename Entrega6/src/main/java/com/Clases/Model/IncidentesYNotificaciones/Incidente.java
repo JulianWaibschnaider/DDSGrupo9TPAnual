@@ -4,12 +4,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
 import com.Clases.Model.ComunidadesYMiembros.Persona;
-import com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
-import com.Clases.Model.JpaServicies.PersonaService;
 import com.Clases.Model.ComunidadesYMiembros.Comunidad;
 import com.Clases.Model.Servicios.Servicio;
 import jakarta.persistence.*;
@@ -42,19 +37,19 @@ public class Incidente {
 		this.diferenciaCierreApertura = ChronoUnit.DAYS.between(fechaCierre, fechaApertura);
 	}
 
-	public LocalDateTime getfechaApertura() {
+	public LocalDateTime getFechaApertura() {
 		return fechaApertura;
 	}
 
-	public void setfechaApertura(LocalDateTime fechaApertura) {
+	public void setFechaApertura(LocalDateTime fechaApertura) {
 		this.fechaApertura = fechaApertura;
 	}
 
-	public LocalDateTime getfechaCierre() {
+	public LocalDateTime getFechaCierre() {
 		return fechaCierre;
 	}
 
-	public void setfechaCierre(LocalDateTime fechaCierre) {
+	public void setFechaCierre(LocalDateTime fechaCierre) {
 		this.fechaCierre = fechaCierre;
 	}
 
