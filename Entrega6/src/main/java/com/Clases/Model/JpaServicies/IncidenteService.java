@@ -47,4 +47,8 @@ public class IncidenteService {
 		return repoIncidentes.findAll();
 	}
 
+	public List<Incidente> BuscarIncidentePorEstado(Boolean estado) {
+		List<Incidente> listaIncidentes = repoIncidentes.findAllIncidenteByEstado(estado);
+		return listaIncidentes;
+	}
 }

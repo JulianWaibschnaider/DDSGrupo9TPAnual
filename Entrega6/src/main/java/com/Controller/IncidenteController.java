@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +21,7 @@ import main.java.com.Clases.Model.JpaServicies.LineaService;
 import main.java.com.Clases.Model.JpaServicies.ServicioService;
 import main.java.com.Clases.Model.Servicios.Servicio;
 import main.java.com.Clases.Model.ServiciosPublicos.Linea;
+import java.util.List;
 
 @Controller
 @CrossOrigin
@@ -58,6 +60,7 @@ public class IncidenteController {
 		}
 
 	}
+
 	@GetMapping(path="/ObtenerIncidentes")
 	public ResponseEntity<List<Incidente>> ObtenerTodosIncidentes() {
 		try {
@@ -90,5 +93,15 @@ public class IncidenteController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 	}
-
+	@GetMapping(path = "/ObtenerIncidentePorEstado")
+	public ResponseEntity<List<Incidente>> ObtenerIncidentePorEstado(@RequestBody String bodyJson) {
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
+		try {
+			return ResponseEntity.ok().body(incidenteService.BuscarIncidentePorEstado(estadoIncidente));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
 }
