@@ -14,11 +14,11 @@ button.addEventListener('click', (event) => {
   // Create a JSON object with the form data
   const data = {
     email: email,
-    password: password
+    contrasenia: password
   };
 
   // Send the JSON data to the specified endpoint
-  fetch('http://localhost:8080/iniciar', {
+  fetch('http://localhost:8080/Iniciar', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -27,11 +27,17 @@ button.addEventListener('click', (event) => {
   })
   .then(response => response.json())
   .then(result => {
-    // Handle the response from the server
+    if (result.email != null) {
+      window.location.href = "index.html";
+      localStorage.setItem('email', result.email);
+      onInit();
+    }else{
+      alert(result.message);
+    }
     console.log(result);
   })
   .catch(error => {
-    // Handle any errors that occur during the request
+    alert(error.JSON.message);
     console.error(error);
   });
 });

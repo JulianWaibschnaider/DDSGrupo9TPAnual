@@ -11,6 +11,11 @@ public class Linea/* extends Entidad*/ {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int idLinea;
+    
+    public int getIdLinea() {
+    	return idLinea;
+    }
+    
 
     @ManyToMany(mappedBy = "lineas")
 
@@ -20,6 +25,7 @@ public class Linea/* extends Entidad*/ {
     @ManyToOne
     @JoinColumn(name = "idEstacionDestino")
     private Estacion estacionDestino;
+    private String nombre;
 
     @ManyToMany
     @JoinTable(name = "EstacionesXLinea", joinColumns = @JoinColumn(name = "idLinea"), inverseJoinColumns = @JoinColumn(name = "idEstacion"))
@@ -63,5 +69,13 @@ public class Linea/* extends Entidad*/ {
         //hacer
         return null;
     }
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 }

@@ -11,6 +11,11 @@ public class Estacion  /*extends Entidad*/{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
     private int idEstacion;
+   
+   public int getidEstacion() {
+	   return idEstacion;
+   }
+   
     
    private String nombre;
   /*  @ManyToMany

@@ -16,6 +16,10 @@ public class Entidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEntidad;
+    
+    public int getIdEntidad() {
+    	return idEntidad;
+    }
     private String nombre;
     /*@ManyToMany
     @JoinTable(name = "ServiciosXEntidad", joinColumns = @JoinColumn(name = "idEntidad"), inverseJoinColumns = @JoinColumn(name = "idServicio"))

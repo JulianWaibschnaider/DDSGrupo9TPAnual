@@ -1,5 +1,7 @@
 package main.java.com.Clases.Model.JpaServicies;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,10 @@ public class IncidenteService {
 		incidente.Cerrar();
 		repoIncidentes.save(incidente);
 		return incidente; // falta poner el servicio en funcionamiento
+	}
+	
+	public List<Incidente>ObtenerIncidentes(){
+		return repoIncidentes.findAll();
 	}
 
 }

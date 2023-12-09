@@ -13,9 +13,30 @@ public class ServicioPersonalizado extends Servicio{
     private String nombre;
     private String atributos;
 
+	private transient String TipoServicio= "Servicio personalizado";
+	public String getTipoServicio() {
+		return TipoServicio;
+	}
+    
     public String ObtenerAtributo(String json){
        //hacer
         return "Agregado";
     }
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getAtributos() {
+		return atributos;
+	}
+
+	public void setAtributos(String atributos) {
+		this.atributos = atributos;
+	}
         
     }

@@ -19,4 +19,18 @@ public class Banio extends Servicio{
         //hacer
         return true;
     }
+
+    
+	public TipoBanio getTipoBanio() {
+		return tipoBanio;
+	}
+
+	public void setTipoBanio(TipoBanio tipoBanio) {
+		this.tipoBanio = tipoBanio;
+	}
+
+	private transient String TipoServicio= "Banio";
+	public String getTipoServicio() {
+		return TipoServicio;
+	}
 }
