@@ -11,14 +11,19 @@ import  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.RepositorioEnt
 public class LlenadorDeCSV {
 
     public static void llenarCSVEntidadesYOrganismos(){
-        RepositorioEntidadesPrestadoras repoEntidadPrestadora = new RepositorioEntidadesPrestadoras();
-    String archivoCSV = "/src/resources/Listadeentidadesprestadorasyorganismosdecontrol.csv";
+        String archivoCSV = "/src/resources/Listadeentidadesprestadorasyorganismosdecontrol.csv";
         List<String> entidadesPrestadorasYOrganismosDeControl = new ArrayList<String>();
         try {          
             entidadesPrestadorasYOrganismosDeControl = (List<String>) Files.readAllLines(Paths.get(System.getProperty("user.dir") + archivoCSV));
         } catch (IOException e) {
             System.out.println("No se pudo leer el archivo: " + e.getMessage());
         }
+        llenarEntidadesYOrganismos(entidadesPrestadorasYOrganismosDeControl);
+    }
+
+    public static void llenarEntidadesYOrganismos(List<String> entidadesPrestadorasYOrganismosDeControl){
+        RepositorioEntidadesPrestadoras repoEntidadPrestadora = new RepositorioEntidadesPrestadoras();
+
         for (String entidadPrestadoraYOrganismoDeControl : entidadesPrestadorasYOrganismosDeControl) {
             int i=1;
             String[] entidadPrestadoraYOrganismoDeControlSeparados = entidadPrestadoraYOrganismoDeControl.split(",");
