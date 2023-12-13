@@ -1,10 +1,10 @@
-package  com.Clases.Model.Servicios;
+package  main.java.com.Clases.Model.Servicios;
 
 import java.util.List;
 
 import jakarta.persistence.*;
 
-import  com.Clases.Model.ComunidadesYMiembros.Persona;
+import  main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 @Entity
 //@Table(name = "Banio")
 @DiscriminatorValue("BANIO")
@@ -20,7 +20,7 @@ public class Banio extends Servicio{
         return true;
     }
 
-   
+    
 	public TipoBanio getTipoBanio() {
 		return tipoBanio;
 	}
@@ -34,4 +34,3 @@ public class Banio extends Servicio{
 		return TipoServicio;
 	}
 }
-

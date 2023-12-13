@@ -1,4 +1,4 @@
-package  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
+package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "EntidadPropietaria")

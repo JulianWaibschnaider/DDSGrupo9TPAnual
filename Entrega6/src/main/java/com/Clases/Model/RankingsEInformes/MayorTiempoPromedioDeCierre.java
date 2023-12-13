@@ -1,4 +1,4 @@
-package  com.Clases.Model.RankingsEInformes;
+package  main.java.com.Clases.Model.RankingsEInformes;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import com. Clases.Model.IncidentesYNotificaciones.Incidente;
-import  com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
-import  com.Clases.Model.ServiciosPublicos.Entidad;
-import  com.Clases.Model.ServiciosPublicos.RepositorioEntidades;
+import main.java.com. Clases.Model.IncidentesYNotificaciones.Incidente;
+import  main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
+import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
+import  main.java.com.Clases.Model.ServiciosPublicos.RepositorioEntidades;
 
 public class MayorTiempoPromedioDeCierre implements Rankear {
 

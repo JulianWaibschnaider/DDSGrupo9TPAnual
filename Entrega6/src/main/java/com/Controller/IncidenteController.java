@@ -1,4 +1,4 @@
-package com.Controller;
+package main.java.com.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,14 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 import org.json.JSONObject;
-
 import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.JpaServicies.IncidenteService;
@@ -62,9 +61,6 @@ public class IncidenteController {
 
 	}
 
-
-
-
 	@GetMapping(path="/ObtenerIncidentes")
 	public ResponseEntity<List<Incidente>> ObtenerTodosIncidentes() {
 		try {
@@ -96,15 +92,13 @@ public class IncidenteController {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
-
+	}
 	@GetMapping(path = "/ObtenerIncidentePorEstado")
 	public ResponseEntity<List<Incidente>> ObtenerIncidentePorEstado(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
 		try {
-			List<Incidente> incidentes = incidenteService.BuscarIncidentePorEstado(estadoIncidente);
-			model.addAttribute("incidentes", incidentes);
-			return "incidenteList"; // This should match the Thymeleaf template name
+			return ResponseEntity.ok().body(incidenteService.BuscarIncidentePorEstado(estadoIncidente));
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());

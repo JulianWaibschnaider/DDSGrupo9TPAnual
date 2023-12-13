@@ -1,4 +1,4 @@
-package com.Controller;
+package main.java.com.Controller;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.Clases.Model.ComunidadesYMiembros.Persona;
-import com.Clases.Model.ComunidadesYMiembros.Usuario;
-import com.Clases.Model.JpaServicies.PersonaService;
+import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
+import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
+import main.java.com.Clases.Model.JpaServicies.PersonaService;
 
 @Controller
 public class PersonaController {

@@ -1,8 +1,8 @@
-package  com.Clases.Model.RankingsEInformes;
+package  main.java.com.Clases.Model.RankingsEInformes;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 
 public class Informe {
     private List<Entidad> rankingMayorCantidadIncidentes;

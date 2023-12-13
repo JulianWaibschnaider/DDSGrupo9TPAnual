@@ -1,19 +1,19 @@
-package com.Clases.Model.ComunidadesYMiembros;
+package main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.time.LocalDate;
 import java.util.List;
-import com.Clases.Model.Servicios.Servicio;
-import com.Clases.Model.ServiciosPublicos.Entidad;
-import com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
+import main.java.com.Clases.Model.Servicios.Servicio;
+import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
+import main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
 
 import java.util.Date;
-import com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
-import com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
-import com.Clases.Model.IncidentesYNotificaciones.NotificacionDeIncidente;
-import com.Clases.Model.IncidentesYNotificaciones.NotificacionDeRevisionManual;
-import com.Clases.Model.Shared.Mensajero;
-import com.Clases.Model.Servicios.RepositorioServicios;
+import main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.EntidadPrestadora;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeIncidente;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.NotificacionDeRevisionManual;
+import main.java.com.Clases.Model.Shared.Mensajero;
+import main.java.com.Clases.Model.Servicios.RepositorioServicios;
 import jakarta.persistence.*;
 
 @Entity

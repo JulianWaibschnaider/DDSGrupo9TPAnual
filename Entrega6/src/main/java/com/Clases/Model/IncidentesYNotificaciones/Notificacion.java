@@ -1,4 +1,4 @@
-package  com.Clases.Model.IncidentesYNotificaciones;
+package  main.java.com.Clases.Model.IncidentesYNotificaciones;
 public class Notificacion{
 
 private Incidente incidente;

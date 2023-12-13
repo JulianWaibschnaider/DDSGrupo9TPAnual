@@ -1,8 +1,8 @@
-package  com.Clases.Model.RankingsEInformes;
+package  main.java.com.Clases.Model.RankingsEInformes;
 
 import java.util.List;
 
-import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 
 public class MayorGradoDeImpacto implements Rankear{
     public  List<Entidad> Execute(){

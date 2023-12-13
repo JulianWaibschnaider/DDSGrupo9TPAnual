@@ -1,6 +1,6 @@
-package  com.Clases.Model.RankingsEInformes;
+package  main.java.com.Clases.Model.RankingsEInformes;
 
-import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import  com.Clases.Model.ServiciosPublicos.Entidad;
+import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 
 @Entity
 @Table(name = "RankingDeIncidentes")

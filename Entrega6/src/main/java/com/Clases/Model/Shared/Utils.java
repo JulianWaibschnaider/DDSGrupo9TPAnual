@@ -1,4 +1,4 @@
-package  com.Clases.Model.Shared;
+package  main.java.com.Clases.Model.Shared;
 
 import java.util.List;
 
