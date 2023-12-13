@@ -30,6 +30,9 @@ button.addEventListener('click', (event) => {
     if (result.email != null) {
       window.location.href = "index.html";
       localStorage.setItem('email', result.email);
+      localStorage.setItem('idPersona', result.idPersona);
+      localStorage.setItem('nombre', result.nombre);
+      localStorage.setItem('apellido', result.apellido);
       onInit();
     }else{
       alert(result.message);

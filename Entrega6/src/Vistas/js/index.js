@@ -1,5 +1,6 @@
 function onInit() {
     loadContent('sidebar.html', 'sidebar');
+    loadContent('navbar.html', 'navbar');
     loadContent('blank.html', 'main-content');
     // Código a ejecutar cuando la página se inicializa
 }

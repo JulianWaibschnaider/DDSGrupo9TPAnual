@@ -39,7 +39,7 @@ public class Incidente {
 	}
 
 	public void setDiferenciaCierreApertura() {
-		this.diferenciaCierreApertura = ChronoUnit.DAYS.between(fechaCierre, fechaApertura);
+		this.diferenciaCierreApertura = ChronoUnit.DAYS.between(fechaApertura, fechaCierre);
 	}
 
 	public LocalDateTime getfechaApertura() {

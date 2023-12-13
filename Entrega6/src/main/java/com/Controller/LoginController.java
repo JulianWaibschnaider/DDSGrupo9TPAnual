@@ -23,6 +23,8 @@ import main.java.com.Clases.Model.JpaServicies.*;
 public class LoginController {
 	@Autowired
 	UsuarioServicie usuarioService;
+	@Autowired
+	PersonaService personaService;
 
 	@GetMapping(path = "/")
 
@@ -31,7 +33,7 @@ public class LoginController {
 	}
 
 	@PostMapping(path = "/Iniciar")
-	public ResponseEntity<Usuario> Iniciar(@RequestBody String bodyJson) {
+	public ResponseEntity<Persona> Iniciar(@RequestBody String bodyJson) {
 		Usuario userIniciado = new Usuario();
 		Usuario usuario = new Usuario();
 		JSONObject jsonObj = new JSONObject(bodyJson);
@@ -39,7 +41,7 @@ public class LoginController {
 		usuario.setContrasenia(jsonObj.getString("contrasenia"));
 		try {
 			userIniciado = usuarioService.IniciarSesion(usuario);
-			return ResponseEntity.ok().body(userIniciado);
+			return ResponseEntity.ok().body(personaService.BuscarPersonaPorEmail(userIniciado.getEmail()));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

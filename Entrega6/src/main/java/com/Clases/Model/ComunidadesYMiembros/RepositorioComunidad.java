@@ -4,5 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioComunidad extends JpaRepository<Comunidad,Long>{
 	
-	Comunidad findComunidadByIdComunidad(int id);	
+	Comunidad findComunidadByIdComunidad(int id);
+	
+	//Comunidad findPersonasObservadorasXComunidadByPersonaIdPersona(int id);
 }

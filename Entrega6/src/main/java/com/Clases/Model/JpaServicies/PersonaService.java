@@ -31,5 +31,11 @@ public class PersonaService {
 	public Persona BuscarPersonaPorEmail(String email) {
 		return repoPersonas.findPersonaByEmail(email);
 	}
-
+	
+	public Comunidad BuscarComunidadesPorPersona(int idPersona)
+	{
+		return repoPersonas.findComunidadesdByidPersona(idPersona);
+	}
 }
+
+

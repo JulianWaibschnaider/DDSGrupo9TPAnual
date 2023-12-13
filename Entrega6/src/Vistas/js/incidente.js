@@ -185,6 +185,7 @@ function CerrarIncidente(id){
   }).then(response => response.json())
   .then(result => {  
       irAIncidente();
+      alert("Incidente cerrado");
     console.log(result);
   })
   // Hacer algo con el idIncidente, como eliminar el incidente con ese ID

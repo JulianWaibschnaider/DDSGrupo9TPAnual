@@ -2,6 +2,9 @@ package main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import main.java.com.Clases.Model.Servicios.Servicio;
 import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 import main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
@@ -27,6 +30,7 @@ public class Persona {
 	private String email;
 	private String nroTelefono;
 	@ManyToMany
+    @JsonBackReference
 	@JoinTable(name = "PersonasXComunidad", joinColumns = @JoinColumn(name = "idPersona"), inverseJoinColumns = @JoinColumn(name = "idComunidad"))
 	private List<Comunidad> comunidades;
 
