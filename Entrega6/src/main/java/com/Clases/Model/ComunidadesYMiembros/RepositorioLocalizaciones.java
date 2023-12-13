@@ -1,4 +1,4 @@
-package  com.Clases.Model.ComunidadesYMiembros;
+package  main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package  com.Clases.Model.ServiciosPublicos;
+package  main.java.com.Clases.Model.ServiciosPublicos;
 
-import  com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import  com.Clases.Model.Servicios.Servicio;
+import  main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import  main.java.com.Clases.Model.Servicios.Servicio;
 import jakarta.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

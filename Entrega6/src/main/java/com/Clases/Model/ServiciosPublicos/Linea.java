@@ -1,8 +1,8 @@
-package  com.Clases.Model.ServiciosPublicos;
+package  main.java.com.Clases.Model.ServiciosPublicos;
 
 import java.util.List;
-import  com.Clases.Model.ComunidadesYMiembros.Localizacion;
-import  com.Clases.Model.ServiciosPublicos.Estacion;
+import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
+import  main.java.com.Clases.Model.ServiciosPublicos.Estacion;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Linea")
@@ -79,4 +79,3 @@ public class Linea/* extends Entidad*/ {
 	}
 
 }
-

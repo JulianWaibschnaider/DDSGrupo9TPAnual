@@ -1,4 +1,4 @@
-package com.Clases.BD;
+package main.java.com.Clases.BD;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

@@ -1,15 +1,10 @@
-package  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
+package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioEntidadesPrestadoras {
     public List<EntidadPrestadora> entidadesPrestadoras;
-
-    public RepositorioEntidadesPrestadoras() {
-        this.entidadesPrestadoras = new ArrayList<>();
-    }
-
+   
     public List<EntidadPrestadora> getEntidadesPrestadoras() {
         return entidadesPrestadoras;
     }

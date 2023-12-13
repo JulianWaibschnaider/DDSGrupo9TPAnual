@@ -1,12 +1,12 @@
-package  com.Clases.Model.ComunidadesYMiembros;
+package  main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.util.Scanner;
 
-import  com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
-import  com.Clases.Model.Shared.LlamadorDeAPI;
-import  com.Clases.Model.Shared.Mensajero;
-import com.Clases.Model.ComunidadesYMiembros.*;
-import com.Clases.Model.JpaServicies.UsuarioServicie;
+import  main.java.com.Clases.Model.ServiciosPublicos.UbicacionGeografica;
+import  main.java.com.Clases.Model.Shared.LlamadorDeAPI;
+import  main.java.com.Clases.Model.Shared.Mensajero;
+import main.java.com.Clases.Model.ComunidadesYMiembros.*;
+import main.java.com.Clases.Model.JpaServicies.UsuarioServicie;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Usuario")

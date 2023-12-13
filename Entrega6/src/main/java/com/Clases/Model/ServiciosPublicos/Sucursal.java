@@ -1,4 +1,4 @@
-/*package  com.Clases.Model.ServiciosPublicos;
+/*package  main.java.com.Clases.Model.ServiciosPublicos;
 import jakarta.persistence.*;
 
 @Entity

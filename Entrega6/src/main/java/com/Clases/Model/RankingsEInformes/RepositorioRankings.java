@@ -1,4 +1,4 @@
-package com.Clases.Model.RankingsEInformes;
+package main.java.com.Clases.Model.RankingsEInformes;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 
 @Repository
 public interface RepositorioRankings extends JpaRepository<RankingDeIncidentes,Long>  {

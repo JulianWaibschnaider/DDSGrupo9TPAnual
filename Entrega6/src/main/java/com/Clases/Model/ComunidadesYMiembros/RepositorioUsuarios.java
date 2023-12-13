@@ -1,4 +1,4 @@
-package  com.Clases.Model.ComunidadesYMiembros;
+package  main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.Controller;
+package main.java.com.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.json.JSONObject;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.Clases.Model.ComunidadesYMiembros.*;
-import com.Clases.Model.JpaServicies.*;
+import main.java.com.Clases.Model.ComunidadesYMiembros.*;
+import main.java.com.Clases.Model.JpaServicies.*;
 
 @Controller
 @CrossOrigin
