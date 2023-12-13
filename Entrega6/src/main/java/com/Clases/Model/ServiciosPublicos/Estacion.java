@@ -1,6 +1,6 @@
-package  main.java.com.Clases.Model.ServiciosPublicos;
+package  com.Clases.Model.ServiciosPublicos;
 
-import  main.java.com.Clases.Model.Servicios.Servicio;
+import  com.Clases.Model.Servicios.Servicio;
 import java.util.List;
 import jakarta.persistence.*;
 @Entity

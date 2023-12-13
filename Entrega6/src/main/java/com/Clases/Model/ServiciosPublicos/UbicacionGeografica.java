@@ -1,6 +1,6 @@
-package  main.java.com.Clases.Model.ServiciosPublicos;
+package  com.Clases.Model.ServiciosPublicos;
 import jakarta.persistence.*;
-import  main.java.com.Clases.Model.ComunidadesYMiembros.Localizacion;
+import  com.Clases.Model.ComunidadesYMiembros.Localizacion;
 
 @Entity
 @Table(name="UbicacionGeografica")

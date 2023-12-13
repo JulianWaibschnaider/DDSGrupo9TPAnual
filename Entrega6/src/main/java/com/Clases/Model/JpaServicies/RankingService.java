@@ -1,4 +1,4 @@
-package main.java.com.Clases.Model.JpaServicies;
+package com.Clases.Model.JpaServicies;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.com.Clases.Model.RankingsEInformes.RankingDeIncidentes;
-import main.java.com.Clases.Model.RankingsEInformes.RepositorioRankings;
+import com.Clases.Model.RankingsEInformes.RankingDeIncidentes;
+import com.Clases.Model.RankingsEInformes.RepositorioRankings;
 
 @Service
 public class RankingService {

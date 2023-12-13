@@ -1,9 +1,9 @@
-package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
+package  com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 
 import java.util.List;
-import  main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import  main.java.com.Clases.Model.RankingsEInformes.Informe;
-import  main.java.com.Clases.Model.ServiciosPublicos.Entidad;
+import  com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import  com.Clases.Model.RankingsEInformes.Informe;
+import  com.Clases.Model.ServiciosPublicos.Entidad;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,5 +1,6 @@
-package  main.java.com.Clases.Model.ServiciosPublicos;
+package  com.Clases.Model.ServiciosPublicos;
 
 public enum TipoTransporte {
     TREN,SUBTE
 }
+

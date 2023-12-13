@@ -1,6 +1,6 @@
-package  main.java.com.Clases.Model.Auth0;
+package  com.Clases.Model.Auth0;
 
-import  main.java.com.Clases.Model.Shared.ConfigReader;
+import  com.Clases.Model.Shared.ConfigReader;
 
 public class Auth0Config {
 	public static final String DOMAIN = "dev-pea42w5x2zewt3o8.us.auth0.com";

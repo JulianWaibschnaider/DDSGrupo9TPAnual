@@ -1,20 +1,7 @@
-package main.java.com;
-
-
-import jakarta.persistence.EntityManager;
+package com;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
-
-import main.java.com.Clases.BD.HibernateManager;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
-//import Clases.ComunidadesYMiembros.RepositorioUsuarios;
-import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
-import main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl.PersonaEncargada;
 
 @SpringBootApplication
 public class MainClass {

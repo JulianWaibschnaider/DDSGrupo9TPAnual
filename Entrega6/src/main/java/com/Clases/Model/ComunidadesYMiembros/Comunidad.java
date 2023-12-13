@@ -1,13 +1,13 @@
-package main.java.com.Clases.Model.ComunidadesYMiembros;
+package com.Clases.Model.ComunidadesYMiembros;
 
 import java.time.LocalDate;
 import java.util.List;
-import main.java.com.Clases.Model.Servicios.Servicio;
-import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
+import com.Clases.Model.Servicios.Servicio;
+import com.Clases.Model.ServiciosPublicos.Entidad;
 import java.util.Date;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.Observer;
-import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
+import com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import com.Clases.Model.IncidentesYNotificaciones.Observer;
+import com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
 import jakarta.persistence.*;
 
 @Entity
