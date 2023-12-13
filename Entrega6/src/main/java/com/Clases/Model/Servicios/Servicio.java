@@ -15,6 +15,10 @@ public class Servicio {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idServicio;
+    
+    public int getIdServicio() {
+    	return idServicio;
+    }
     private Boolean enFuncionamiento;
     @OneToOne
     @JoinColumn(name = "idEntidad")

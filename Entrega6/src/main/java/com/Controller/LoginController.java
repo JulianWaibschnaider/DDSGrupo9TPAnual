@@ -1,6 +1,7 @@
 package com.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -30,9 +31,12 @@ public class LoginController {
 	}
 
 	@PostMapping(path = "/Iniciar")
-	public ResponseEntity<Usuario> Iniciar(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> Iniciar(@RequestBody String bodyJson) {
 		Usuario userIniciado = new Usuario();
-		
+		Usuario usuario = new Usuario();
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		usuario.setEmail(jsonObj.getString("email"));
+		usuario.setContrasenia(jsonObj.getString("contrasenia"));
 		try {
 			userIniciado = usuarioService.IniciarSesion(usuario);
 			return ResponseEntity.ok().body(userIniciado);

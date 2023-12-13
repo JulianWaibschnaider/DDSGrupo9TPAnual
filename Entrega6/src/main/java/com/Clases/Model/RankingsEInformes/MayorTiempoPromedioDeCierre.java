@@ -18,13 +18,13 @@ public class MayorTiempoPromedioDeCierre implements Rankear {
         // devolvemos la entidad que tiene ese incidente
         List<Entidad> rankingMayorTiempoPromedioDeCierre = new ArrayList<Entidad>();
 
-        for (Entidad entidad : RepositorioEntidades.getEntidades()) {
+       /* for (Entidad entidad : RepositorioEntidades.getEntidades()) {
             if (entidad.getPromedioCierreIncidentes() > 0) {
                 rankingMayorTiempoPromedioDeCierre.add(entidad);
             }
         }
         
-        rankingMayorTiempoPromedioDeCierre.sort(Comparator.comparingDouble(Entidad::getPromedioCierreIncidentes));
+        rankingMayorTiempoPromedioDeCierre.sort(Comparator.comparingDouble(Entidad::getPromedioCierreIncidentes));*/
         return rankingMayorTiempoPromedioDeCierre;
     }
 }

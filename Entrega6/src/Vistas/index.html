@@ -33,41 +33,10 @@
     <!-- Script para cargar el contenido inicial -->
     <script>
         // Cargar contenido inicial en el sidebar, navbar y contenido principal
-        loadContent('sidebar.html', 'sidebar');
-        loadContent('blank.html', 'main-content');
+
 
         // Función para cargar contenido
-        function loadContent(url, target) {
-            const targetElement = document.getElementById(target);
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    targetElement.innerHTML = data;
-                });
-        }
 
-        function navigateToPage(page) {
-            loadContent(page, 'main-content');
-        }
-
-        function irAIncidente(){
-        navigateToPage('incidente.html');
-        }
-
-        function irAOrgYEnti(){
-            navigateToPage('organismosyentes.html');
-        } 
-
-        function sugerencia(){
-            navigateToPage('sugerencia.html');
-        } 
-
-        function misComunidades(){
-            navigateToPage('adminusuarios.html');
-        } 
-        function ranking(){
-            navigateToPage('ranking.html');
-        } 
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -78,7 +47,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.js"></script>
-
+    <script src="js/index.js"></script>
+    <script src="js/incidente.js"></script>
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 

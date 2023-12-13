@@ -74,5 +74,13 @@ public class RankingDeIncidentes{
 		this.rankingMayorCantidadIncidentes = rankingMayorCantidadIncidentes;
 	}
 
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
 	private LocalDate fecha = LocalDate.now();
 }

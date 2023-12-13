@@ -23,4 +23,8 @@ public interface RepositorioServicios extends JpaRepository<Servicio,Long> {
     @Query("update Servicio set enFuncionamiento = ?2 where IdServicio=?1")
 	int UpdateEnFuncionamientoByIdServicio(int idServicio, boolean estado);
 	*/
+	//@Modifying
+	//@Transactional
+    //@Query("SELECT * from servicio where id_entidad= (select id_entidad from entidad where linea_id_linea =?1 and estacion_id_estacion=?2 )")
+	List<Servicio> findServicioByEntidadIdEntidad(int idEntidad);
 }

@@ -42,6 +42,10 @@ public class IncidenteService {
 		repoIncidentes.save(incidente);
 		return incidente; // falta poner el servicio en funcionamiento
 	}
+	
+	public List<Incidente>ObtenerIncidentes(){
+		return repoIncidentes.findAll();
+	}
 
 	public List<Incidente> BuscarIncidentePorEstado(Boolean estado) {
 		List<Incidente> listaIncidentes = repoIncidentes.findAllIncidenteByEstado(estado);

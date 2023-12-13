@@ -5,13 +5,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ui.Model;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+
 import org.json.JSONObject;
-import com.Clases.Model.IncidentesYNotificaciones.Incidente;
-import com.Clases.Model.JpaServicies.IncidenteService;
+
+import main.java.com.Clases.Model.ComunidadesYMiembros.Usuario;
+import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
+import main.java.com.Clases.Model.JpaServicies.IncidenteService;
+import main.java.com.Clases.Model.JpaServicies.LineaService;
+import main.java.com.Clases.Model.JpaServicies.ServicioService;
+import main.java.com.Clases.Model.Servicios.Servicio;
+import main.java.com.Clases.Model.ServiciosPublicos.Linea;
 import java.util.List;
 
 @Controller
@@ -19,6 +29,10 @@ import java.util.List;
 public class IncidenteController {
 	@Autowired
 	private IncidenteService incidenteService;
+	@Autowired
+	private LineaService lineaService;
+	@Autowired
+	private ServicioService servicioService;
 
 	@PostMapping(path = "/CrearIncidente")
 	public ResponseEntity<Incidente> CrearIncidente(@RequestBody String bodyJson) {
@@ -48,8 +62,43 @@ public class IncidenteController {
 
 	}
 
-	@PostMapping("/ObtenerIncidentePorEstado")
-	public String ObtenerIncidentePorEstado(@RequestBody String bodyJson, Model model) {
+
+
+
+	@GetMapping(path="/ObtenerIncidentes")
+	public ResponseEntity<List<Incidente>> ObtenerTodosIncidentes() {
+		try {
+			return new ResponseEntity<> (incidenteService.ObtenerIncidentes(),HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
+	
+	@GetMapping(path="/ObtenerLineas")
+	public ResponseEntity<List<Linea>>ObtenerLineas(){
+		try {
+			return new ResponseEntity<> (lineaService.ObtenerLineas(),HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
+	
+	@PostMapping(path="/ObtenerServicios")
+	public ResponseEntity<List<Servicio>>ObtenerServicios(@RequestBody String bodyJson){
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		int idLinea = jsonObj.getInt("idLinea");
+		int idEstacion = jsonObj.getInt("idEstacion");
+		try {
+			return new ResponseEntity<> (servicioService.ObtenerServicioByLineaYEstacion(idLinea, idEstacion),HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+
+	@GetMapping(path = "/ObtenerIncidentePorEstado")
+	public ResponseEntity<List<Incidente>> ObtenerIncidentePorEstado(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
 		try {

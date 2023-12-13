@@ -21,7 +21,7 @@ public class UsuarioServicie {
 
 		Boolean esUsuario = false;
 		if (!this.validarInicioSesion(user)) {
-			throw new Exception("Error obteniendo el usuario");
+			throw new Exception("Usuario Incorrecto");
 		}
 		Usuario usuario = repoUsuarios.findUsuarioByEmail(user.getEmail());
 		if (usuario != null) {
@@ -31,7 +31,7 @@ public class UsuarioServicie {
 		if (esUsuario) {
 			return usuario;
 		}
-		throw new Exception("Error obteniendo el usuario");
+		throw new Exception("Contrasenia incorrecta");
 	}
 
 	public Boolean validarInicioSesion(Usuario user) {

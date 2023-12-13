@@ -14,13 +14,13 @@ import  com.Clases.Model.ServiciosPublicos.RepositorioEntidades;
 public class MayorCantidadIncidentes implements Rankear {
 
     public List<Entidad> Execute() {
-        List<Entidad> rankingMayorCantidadIncidentes = new ArrayList<Entidad>();
-        for (Entidad entidad : RepositorioEntidades.getEntidades()) {
+       List<Entidad> rankingMayorCantidadIncidentes = new ArrayList<Entidad>();
+    /*    for (Entidad entidad : RepositorioEntidades.getEntidades()) {
             if (entidad.getIncidentesReportados() > 0) {
                 rankingMayorCantidadIncidentes.add(entidad);
             }
         }
-        rankingMayorCantidadIncidentes.sort(Comparator.comparingDouble(Entidad::getIncidentesReportados));
+        rankingMayorCantidadIncidentes.sort(Comparator.comparingDouble(Entidad::getIncidentesReportados));*/
         return rankingMayorCantidadIncidentes;
     }
 }
