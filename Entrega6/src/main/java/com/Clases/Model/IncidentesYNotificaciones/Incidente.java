@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.Date;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
@@ -28,8 +30,12 @@ public class Incidente {
 	@JoinColumn(name = "idServicio")
 	private Servicio servicio;
 	private Boolean estado;// true es abierto y false es cerrado
+	
 	//@ManyToMany(mappedBy = "incidentes")
-	//private List<Comunidad> comunidades;
+	@ManyToMany
+	@JoinTable(name = "Incidentes_Comunidad", joinColumns = @JoinColumn(name = "id_incidente"), inverseJoinColumns = @JoinColumn(name = "id_comunidad"))
+	@JsonBackReference
+	private List<Comunidad> comunidades;
 	private LocalDateTime fechaApertura;
 	private LocalDateTime fechaCierre;
 	private long diferenciaCierreApertura;
@@ -80,7 +86,7 @@ public class Incidente {
 		this.persona = persona;
 		this.setObservaciones(_observaciones);
 		this.servicio = _servicio;
-		// this.comunidades = persona.getComunidades();
+		this.comunidades = persona.getComunidades();
 		this.fechaApertura = LocalDateTime.now();
 		this.fechaCierre = null;
 		this.estado = true;// el estado del incidente es abierto
@@ -100,9 +106,13 @@ public class Incidente {
 	}
 
 	public List<Comunidad> getComunidades() {
-		return null;//comunidades;
+		return comunidades;
 	}
 
+	public void setComunidades(List<Comunidad> comunidades) {
+		this.comunidades = comunidades;
+	}
+	
 	public Boolean getEstado() {
 		return estado;
 	}

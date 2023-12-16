@@ -26,7 +26,7 @@ button.addEventListener('click', (event) => {
     body: JSON.stringify(data)
   })
   .then(response => response.json())
-  .then(result => {
+  .then(result => { 
     if (result.email != null) {
       window.location.href = "index.html";
       localStorage.setItem('email', result.email);

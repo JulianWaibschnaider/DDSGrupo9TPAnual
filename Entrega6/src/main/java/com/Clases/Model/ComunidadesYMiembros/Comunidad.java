@@ -2,6 +2,9 @@ package main.java.com.Clases.Model.ComunidadesYMiembros;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import org.hibernate.annotations.FetchProfile.FetchOverride;
+
 import main.java.com.Clases.Model.Servicios.Servicio;
 import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 import java.util.Date;
@@ -27,14 +30,21 @@ public class Comunidad implements Observer {
 	@ManyToMany
 	@JoinTable(name = "PersonasAdminXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idPersona"))
 	private List<Persona> administradoresComunidad;
-	/*@ManyToMany(mappedBy = "comunidades")
-	private List<Persona> miembrosComunidad;*/
+	/*
+	 * @ManyToMany(mappedBy = "comunidades") private List<Persona>
+	 * miembrosComunidad;
+	 */
 	@ManyToMany
 	@JoinTable(name = "ServiciosXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idServicio"))
 	private List<Servicio> servicios;
-	@ManyToMany
-	@JoinTable(name = "IncidentesXComunidad", joinColumns = @JoinColumn(name = "idComunidad"), inverseJoinColumns = @JoinColumn(name = "idIncidente"))
+	@ManyToMany(mappedBy = "comunidades")
 	private List<Incidente> incidentes;
+
+	private transient String Rol;
+	
+	public int getIdComunidad() {
+		return idComunidad;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -61,19 +71,29 @@ public class Comunidad implements Observer {
 	}
 
 	public Boolean ExisteUsuarioAfectado(int idPersona) {
-		for(Persona persona : this.usuariosAfectados) {
-			return persona.getIdPersona() == idPersona; 
+		boolean afectado = false;
+		for (Persona persona : this.usuariosAfectados) {
+			afectado = persona.getIdPersona() == idPersona;
+			if (afectado) {
+				break;
+			}
 		}
-		return false;
+		this.Rol = afectado ? "Afectado" : null;
+		return afectado;
 	}
-	
-	
+
 	public Boolean ExisteUsuarioObservador(int idPersona) {
-		for(Persona persona : this.usuariosObservadores) {
-			return persona.getIdPersona() == idPersona; 
+		boolean observa = false;
+		for (Persona persona : this.usuariosObservadores) {
+			observa = persona.getIdPersona() == idPersona;
+			if(observa) {
+				break;
+			}
 		}
-		return false;
+		this.Rol = observa ? "Observador" : null;
+		return observa;
 	}
+
 	public void setUsuariosAfectados(List<Persona> usuariosAfectados) {
 		this.usuariosAfectados = usuariosAfectados;
 	}
@@ -81,9 +101,11 @@ public class Comunidad implements Observer {
 	public void addUsuariosAfectados(Persona persona) {
 		this.usuariosAfectados.add(persona);
 	}
+
 	public void deleteUsuariosAfectados(Persona persona) {
 		this.usuariosAfectados.remove(persona);
 	}
+
 	public void deleteUsuariosObservadores(Persona persona) {
 		this.usuariosObservadores.remove(persona);
 	}
@@ -96,13 +118,12 @@ public class Comunidad implements Observer {
 		this.administradoresComunidad = administradoresComunidad;
 	}
 
-	/*public List<Persona> getMiembrosComunidad() {
-		return miembrosComunidad;
-	}
-
-	public void setMiembrosComunidad(List<Persona> miembrosComunidad) {
-		this.miembrosComunidad = miembrosComunidad;
-	}*/
+	/*
+	 * public List<Persona> getMiembrosComunidad() { return miembrosComunidad; }
+	 * 
+	 * public void setMiembrosComunidad(List<Persona> miembrosComunidad) {
+	 * this.miembrosComunidad = miembrosComunidad; }
+	 */
 
 	public List<Servicio> getServicios() {
 		return servicios;
@@ -128,9 +149,8 @@ public class Comunidad implements Observer {
 		this.incidentes.remove(incidente);
 	}
 
-	@Override
 	public void NotificarIncidente(Incidente incidente) {
-		List<Persona> personas = null ;
+		List<Persona> personas = null;
 		personas.addAll(this.usuariosAfectados);
 		personas.addAll(this.usuariosObservadores);
 
@@ -143,5 +163,9 @@ public class Comunidad implements Observer {
 				// falta hacer que los que no envio, vuelva a consultar en el proximo horario
 			}
 		}
+	}
+
+	public String getRol() {
+		return Rol;
 	}
 }

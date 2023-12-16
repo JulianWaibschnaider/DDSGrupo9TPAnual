@@ -68,7 +68,14 @@ public interface RepositorioIncidentes extends JpaRepository<Incidente,Long>{
         incidentesNoEnviados.add(incidente);
     }
 
+/*    @Transactional
+    @Modifying
+    @Query("select i from Incidente i "
+            + "inner join Incidentes_Comunidad ic on ic.id_incidente = i.id "
+            + "where ic.id_comunidad = ?1")*/
+    List<Incidente> findIncidentesByComunidadesIdComunidad(Integer idsComunidades);
 
+    
    /* public static void EnviarIncidentesNoEnviados() {
        //aca va el timer que se ejecuta cada 30 min 
         for (Incidente incidentenoEnviado : incidentesNoEnviados) {

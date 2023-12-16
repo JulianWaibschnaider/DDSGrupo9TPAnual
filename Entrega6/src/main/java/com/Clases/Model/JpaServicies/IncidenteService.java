@@ -1,5 +1,5 @@
 package main.java.com.Clases.Model.JpaServicies;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,7 @@ public class IncidenteService {
 		Incidente incidente = new Incidente();
 		Servicio servicio = repoServicio.findServicioByIdServicio(idServicio);
 		Persona persona = personaService.BuscarPersonaPorEmail(_email);
+		persona.setComunidades(personaService.BuscarComunidadesPorPersona(persona.getIdPersona()));
 		incidente.Abrir(_email, _observaciones, servicio, persona);
 		Incidente inci = repoIncidentes.save(incidente);
 		if (inci != null) {
@@ -43,8 +44,13 @@ public class IncidenteService {
 		return incidente; // falta poner el servicio en funcionamiento
 	}
 	
-	public List<Incidente>ObtenerIncidentes(){
-		return repoIncidentes.findAll();
+	public List<Incidente>ObtenerIncidentes(int idPersona){
+		List<Integer> idsComunidades = personaService.BuscarIdsComunidadesPorPersona(idPersona);
+		List<Incidente> incidentes = new ArrayList<>();
+		for(int idComus : idsComunidades){
+			incidentes.addAll(repoIncidentes.findIncidentesByComunidadesIdComunidad(idComus));
+		}
+		return incidentes;
 	}
 
 	public List<Incidente> BuscarIncidentePorEstado(Boolean estado) {
