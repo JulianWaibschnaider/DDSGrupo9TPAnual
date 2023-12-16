@@ -69,6 +69,13 @@
                             </div>
                         </li>
 
+                        <!-- Nav Item - Custom Button -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="customButton">
+                                <i class="fas fa-bell fa-fw"></i>
+                            </a>
+                        </li>
+
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -262,8 +269,35 @@
 
 
 </body>
-
-
-
-
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Custom button click event
+        document.getElementById("customButton").addEventListener("click", function () {
+            // Show the modal
+            $('#customModal').modal('show');
+        });
+    });
+</script>
 </html>
+
+<!-- Custom Modal -->
+<div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="customModalLabel">Custom Popup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Your custom message goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Button 1</button>
+                <button type="button" class="btn btn-primary">Button 2</button>
+            </div>
+        </div>
+    </div>
+</div>
