@@ -2,19 +2,12 @@ package  main.java.com.Clases.Model.EntidadesPrestadorasYOrganismosDeControl;
 
 import java.util.List;
 
-public class RepositorioEntidadesPrestadoras {
-    public List<EntidadPrestadora> entidadesPrestadoras;
-   
-    public List<EntidadPrestadora> getEntidadesPrestadoras() {
-        return entidadesPrestadoras;
-    }
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    public void setEntidadesPrestadoras(List<EntidadPrestadora> entidadesPrestadoras) {
-        this.entidadesPrestadoras = entidadesPrestadoras;
-    }
+import main.java.com.Clases.Model.ServiciosPublicos.Entidad;
 
-    public void addEntidadesPrestadoras(EntidadPrestadora entidadPrestadora) {
-        this.entidadesPrestadoras.add(entidadPrestadora);
-    }
-
+@Repository
+public interface RepositorioEntidadesPrestadoras extends JpaRepository<EntidadPrestadora,Long>{
+	EntidadPrestadora findEntidadPrestadoraByNombre(String nombre);
 }

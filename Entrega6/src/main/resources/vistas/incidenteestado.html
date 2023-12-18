@@ -1,0 +1,51 @@
+<table class="table table-bordered" id="tabla-incidentes" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Fecha Apertura</th>
+            <th>Servicio</th>
+            <th>Transporte</th>
+            <th>Linea</th>
+            <th>Estacion</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Fecha Cierre</th>
+            <th>Cerrar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#incidentes}}
+        <td>{{fechaApertura}}</td>
+        <td>
+            {{servicio.tipoServicio}} 
+            {{#servicio.tipoBanio}}
+                {{servicio.tipoBanio}}
+            {{/servicio.tipoBanio}}
+            {{#servicio.tipoElevacion}}
+                {{#servicio.tipoBanio}} - {{/servicio.tipoBanio}}{{servicio.tipoElevacion}}
+            {{/servicio.tipoElevacion}}
+        </td>
+        <td>{{servicio.entidad.linea.tipoTransporte}}</td>
+        <td>{{servicio.entidad.linea.nombre}}</td>
+        <td>{{servicio.entidad.estacion.nombre}}</td>
+        <td>{{observaciones}}</td>
+        <td>{{#estado}}Abierto{{/estado}}{{^estado}}Cerrado{{/estado}}</td>
+        <td>
+            {{#fechaCierre}}
+                {{fechaCierre}}
+            {{/fechaCierre}}
+            {{^fechaCierre}}
+                No disponible
+            {{/fechaCierre}}
+        </td>
+        <th><a class="btn btn-danger btn-circle btn-sm" onclick="CerrarIncidente()"
+                data-incident-id="{{id}}">
+                <i class="fas fa-trash"></i>
+            </a></th>
+        {{/incidentes}}
+    </tbody>
+</table>
+<div id="paginacion">
+    <button class="btn btn-primary btn-icon-split" onclick="Anterior()" id="anterior">Anterior</button>
+    <span id="paginacionInfo">Página 1 de 1</span>
+    <button class="btn btn-primary btn-icon-split" onclick="Siguiente()" id="siguiente">Siguiente</button>
+</div>

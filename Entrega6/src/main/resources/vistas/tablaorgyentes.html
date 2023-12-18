@@ -1,0 +1,29 @@
+<div class="table-responsive" id="tablaCarga">
+    <table class="table table-bordered" id="tablaorgent" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Fecha Carga</th>
+                <th>Entidad Prestadora</th>
+                <th>Organismos de control</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#entidades}}
+            <tr>
+                <td>{{fecha}}</td>
+                <td>{{nombre}}</td>
+                <td>
+                    {{#organismosDeControl}}
+                    {{nombre}}
+                    <br>                    
+                    {{/organismosDeControl}}
+                </td>
+            </tr>
+            {{/entidades}}
+        
+
+
+        </tbody>
+
+    </table>
+   

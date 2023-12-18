@@ -14,6 +14,11 @@ public class EntidadPrestadora {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int idEntidadPrestadora;
+    
+    public int getidEntidadesPrestadora(){
+    	return idEntidadPrestadora;
+    }
+    
     private String nombre;
 
     @OneToOne

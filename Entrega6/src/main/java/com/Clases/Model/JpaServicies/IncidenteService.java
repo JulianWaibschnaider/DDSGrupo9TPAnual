@@ -1,6 +1,8 @@
 package main.java.com.Clases.Model.JpaServicies;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,7 @@ import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
 import main.java.com.Clases.Model.Servicios.RepositorioServicios;
 import main.java.com.Clases.Model.Servicios.Servicio;
-
+import java.util.HashSet;
 @Service
 public class IncidenteService {
 	@Autowired
@@ -44,17 +46,20 @@ public class IncidenteService {
 		return incidente; // falta poner el servicio en funcionamiento
 	}
 	
-	public List<Incidente>ObtenerIncidentes(int idPersona){
-		List<Integer> idsComunidades = personaService.BuscarIdsComunidadesPorPersona(idPersona);
-		List<Incidente> incidentes = new ArrayList<>();
-		for(int idComus : idsComunidades){
-			incidentes.addAll(repoIncidentes.findIncidentesByComunidadesIdComunidad(idComus));
-		}
-		return incidentes;
+	public List<Incidente> ObtenerIncidentes(int idPersona) {
+	    List<Integer> idsComunidades = personaService.BuscarIdsComunidadesPorPersona(idPersona);
+	    Set<Incidente> incidentesSet = new HashSet<>(); // Utilizamos un Set para evitar duplicados
+	    for (int idComus : idsComunidades) {
+	        incidentesSet.addAll(repoIncidentes.findIncidentesByComunidadesIdComunidad(idComus));
+	    }
+	    return new ArrayList<>(incidentesSet); // Convertimos el Set de incidentes de nuevo a List
 	}
 
-	public List<Incidente> BuscarIncidentePorEstado(Boolean estado) {
-		List<Incidente> listaIncidentes = repoIncidentes.findAllIncidenteByEstado(estado);
-		return listaIncidentes;
+	public List<Incidente> BuscarIncidentePorEstado(Boolean estado, int idPersona) {
+	    List<Incidente> listaIncidentes = new ArrayList<>();
+	    listaIncidentes=ObtenerIncidentes(idPersona);
+	   return listaIncidentes.stream()
+	            .filter(inc -> inc.getEstado().equals(estado)) 
+	            .collect(Collectors.toList()); 
 	}
 }

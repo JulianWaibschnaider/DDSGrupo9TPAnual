@@ -7,7 +7,7 @@ import  main.java.com.Clases.Model.RankingsEInformes.Informe;
 @Table(name = "OrganismoDeControl")
 
 public class OrganismoDeControl {
-    @Id
+   @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int idOrganismoDeControl;
@@ -60,5 +60,13 @@ public class OrganismoDeControl {
     public void setPersonaEncargada(PersonaEncargada personaEncargada) {
         this.personaEncargada = personaEncargada;
     }
+
+	public int getIdOrganismoDeControl() {
+		return idOrganismoDeControl;
+	}
+
+	public void setIdOrganismoDeControl(int idOrganismoDeControl) {
+		this.idOrganismoDeControl = idOrganismoDeControl;
+	}
 
 }
