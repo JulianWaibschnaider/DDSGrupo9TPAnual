@@ -46,7 +46,7 @@ public class IncidenteController {
 		int IdServicio = jsonObj.getInt("id");
 		try {
 			Incidente incidente = incidenteService.AbrirIncidente(Email, observaciones, IdServicio);
-			return ResponseEntity.ok().body(incidente);
+			return ResponseEntity.ok().body(incidente);//devulevo un incidente que response entity arma un json
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
@@ -109,6 +109,7 @@ public class IncidenteController {
 		boolean estadoIncidente = jsonObj.getBoolean("EstadoIncidente");
 		List<Incidente> incidentes;
 		try {
+			//ponemos el nombre de la vista que tiene que devolver
 			ModelAndView modelAndView = new ModelAndView("incidenteestado");
 			incidentes = incidenteService.BuscarIncidentePorEstado(estadoIncidente, idPersona);
 			modelAndView.addObject("incidentes", incidentes);

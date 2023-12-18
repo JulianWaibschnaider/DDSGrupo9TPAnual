@@ -21,7 +21,8 @@ button.addEventListener('click', (event) => {
   fetch('http://localhost:8080/Iniciar', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*' // Add this line
     },
     body: JSON.stringify(data)
   })
@@ -40,7 +41,7 @@ button.addEventListener('click', (event) => {
     console.log(result);
   })
   .catch(error => {
-    alert(error.JSON.message);
     console.error(error);
+    alert(error.JSON.message);
   });
 });

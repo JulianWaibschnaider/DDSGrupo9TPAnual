@@ -12,8 +12,8 @@
             <th>Cerrar</th>
         </tr>
     </thead>
+    {{#incidentes}}<!--reocrre la lista como un foreach-->
     <tbody>
-        {{#incidentes}}
         <td>{{fechaApertura}}</td>
         <td>
             {{servicio.tipoServicio}} 
@@ -41,8 +41,8 @@
                 data-incident-id="{{id}}">
                 <i class="fas fa-trash"></i>
             </a></th>
-        {{/incidentes}}
-    </tbody>
+        </tbody>
+        {{/incidentes}}<!--termina de reocrrer-->
 </table>
 <div id="paginacion">
     <button class="btn btn-primary btn-icon-split" onclick="Anterior()" id="anterior">Anterior</button>

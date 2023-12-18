@@ -31,6 +31,7 @@ function llenarTablaIncidentes(pagina) {
 
 
   // Recorrer los incidentes y agregar filas a la tabla
+  //el html lo esta armando el front con los datos que le llegaron del back (PESADO)
   incidentesPagina.forEach(incidente => {
     if (incidente.servicio.tipoBanio != null) {
       incidente.servicio.tipoServicio = incidente.servicio.tipoServicio + " " + incidente.servicio.tipoBanio;
@@ -211,14 +212,14 @@ function AbrirIncidente() {
     id: servicioSeleccionadoId,
     observacion: descripcionValue
   };
-  fetch('http://localhost:8080/CrearIncidente', {
+  fetch('http://localhost:8080/CrearIncidente', {//se hace el envio (llamada al backend)
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   }).then(response => response.json())
-    .then(result => {
+    .then(result => {//json
       irAIncidente();
       console.log(result);
     })

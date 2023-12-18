@@ -1,11 +1,11 @@
 package main.java.com.Clases.Model.JpaServicies;
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.List;
+import java.util.HashSet;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+//import java.util.Set;
 
 import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
 import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
@@ -13,7 +13,6 @@ import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
 import main.java.com.Clases.Model.Servicios.RepositorioServicios;
 import main.java.com.Clases.Model.Servicios.Servicio;
-import java.util.HashSet;
 @Service
 public class IncidenteService {
 	@Autowired
@@ -48,11 +47,11 @@ public class IncidenteService {
 	
 	public List<Incidente> ObtenerIncidentes(int idPersona) {
 	    List<Integer> idsComunidades = personaService.BuscarIdsComunidadesPorPersona(idPersona);
-	    Set<Incidente> incidentesSet = new HashSet<>(); // Utilizamos un Set para evitar duplicados
+	    HashSet<Incidente> incidentesSet = new HashSet<Incidente>(); // Utilizamos un Set para evitar duplicados
 	    for (int idComus : idsComunidades) {
 	        incidentesSet.addAll(repoIncidentes.findIncidentesByComunidadesIdComunidad(idComus));
 	    }
-	    return new ArrayList<>(incidentesSet); // Convertimos el Set de incidentes de nuevo a List
+	   return new ArrayList<>(incidentesSet); // Convertimos el Set de incidentes de nuevo a List
 	}
 
 	public List<Incidente> BuscarIncidentePorEstado(Boolean estado, int idPersona) {
