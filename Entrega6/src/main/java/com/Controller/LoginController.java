@@ -50,4 +50,21 @@ public class LoginController {
 		}
 
 	}
+	
+	
+	@PostMapping(path = "/ObtenerPersona")
+	public ResponseEntity<Persona> ObtenerPersona(@RequestBody String bodyJson) {
+		Usuario userIniciado = new Usuario();
+		Usuario usuario = new Usuario();
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		usuario.setEmail(jsonObj.getString("email"));
+		try {
+			return ResponseEntity.ok().body(personaService.BuscarPersonaPorEmail(usuario.getEmail()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+
+	}
 }
