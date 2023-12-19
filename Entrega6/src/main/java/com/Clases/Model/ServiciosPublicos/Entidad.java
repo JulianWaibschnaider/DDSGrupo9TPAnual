@@ -36,6 +36,9 @@ public class Entidad {
     private Linea linea;
     @OneToOne
     private Estacion estacion;
+    
+    private transient int puesto;
+    
     public int getIncidentesReportados() {
       //  CalcularCantidadIncidentesReportados();
         return incidentesReportados;
@@ -149,6 +152,14 @@ public class Entidad {
 
 	public void setEstacion(Estacion estacion) {
 		this.estacion = estacion;
+	}
+
+	public int getPuesto() {
+		return puesto;
+	}
+
+	public void setPuesto(int puesto) {
+		this.puesto = puesto;
 	}
 
 

@@ -1,6 +1,6 @@
 var incidentes;
 var rowsPorPagina = 5;
-
+let modificacionHecha = false;
 // Función para llenar la tabla con los datos obtenidos del endpoint
 function llenarTablaIncidentes(pagina) {
   // Obtener referencia a la tabla
@@ -8,10 +8,18 @@ function llenarTablaIncidentes(pagina) {
   const tabla = document.getElementById('tabla-incidentes');
   let incidentesUnicos = {};
   var rowsPorPagina = 5;
-  incidentes.forEach(incidente => {
-    incidentesUnicos[incidente.id] = incidente;
-  });
 
+  incidentes.forEach(incidente => {
+    if(!modificacionHecha){
+    if (incidente.servicio.tipoBanio != null) {
+      incidente.servicio.tipoServicio = incidente.servicio.tipoServicio + " " + incidente.servicio.tipoBanio;
+    } else if (incidente.servicio.tipoElevacion != null) {
+      incidente.servicio.tipoServicio = incidente.servicio.tipoServicio + " " + incidente.servicio.tipoElevacion;
+    }}
+    incidentesUnicos[incidente.id] = incidente;
+
+  });
+      modificacionHecha = true;
   incidentes = Object.values(incidentesUnicos);
   const inicio = (pagina - 1) * rowsPorPagina;
   const fin = inicio + rowsPorPagina;
@@ -33,11 +41,7 @@ function llenarTablaIncidentes(pagina) {
   // Recorrer los incidentes y agregar filas a la tabla
   //el html lo esta armando el front con los datos que le llegaron del back (PESADO)
   incidentesPagina.forEach(incidente => {
-    if (incidente.servicio.tipoBanio != null) {
-      incidente.servicio.tipoServicio = incidente.servicio.tipoServicio + " " + incidente.servicio.tipoBanio;
-    } else if (incidente.servicio.tipoElevacion != null) {
-      incidente.servicio.tipoServicio = incidente.servicio.tipoServicio + " " + incidente.servicio.tipoElevacion;
-    }
+   
     const fila = document.createElement('tr');
     fila.innerHTML = `
       <td>${incidente.fechaApertura}</td>
@@ -56,15 +60,7 @@ function llenarTablaIncidentes(pagina) {
   paginacionInfo.textContent = `Página ${pagina} de ${Math.ceil(incidentes.length / rowsPorPagina)}`;
 }
 
-function ponerNombre(){
-  var nombre = localStorage.getItem('nombre');
 
-  // Buscamos el elemento donde queremos mostrar el nombre y lo actualizamos
-  var userNameElement = document.getElementById('nombreusuario');
-  if (nombre && userNameElement) {
-      userNameElement.textContent = nombre;
-  }
-}
 
 function Anterior() {
   if (paginaActual > 1) {
@@ -85,6 +81,7 @@ function Siguiente() {
 var paginaActual;
 // Función para obtener los incidentes del endpoint
 function obtenerIncidentes() {
+  modificacionHecha = false;
   const idPersona = Number(localStorage.getItem('idPersona'));
   paginaActual = 1;
   fetch('http://localhost:8080/ObtenerIncidentes',

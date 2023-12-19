@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -102,7 +101,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span id="nombreusuario" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <span  id="nombreusuario" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -125,40 +124,17 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Rankings</h1>
-                    <p class="mb-4">Aqui vas a ver los rankings de entidades</p>
+                    <h1  class="h3 mb-2 text-gray-800">Mis comunidades</h1>
+                    <p class="mb-4">Aqui podras modificar tu rol en las comunidades que sos parte!</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Ranking</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Admin usuario</h6>
                         </div>
-                        <div>
-                            <label class="mb-4" style="padding-left: 1em;
-                        padding-top: 1em;" for="rankear">Rankear por:</label>
-                            <select name="rankear" id="rankear" onchange="llenarFechas()">
-                                <optgroup label>
-                                    <option value="" disabled selected>Selecciona un tipo de ranking</option>
-                                    <option value="0">Mayor tiempo promedio cierre de incidentes</option>
-                                    <option value="1">Mayor grado de impacto de las problematicas</option>
-                                    <option value="2">Mayor cantidad de incidentes reportados</option>
-                                </optgroup>
-                            </select>
-                        </div>
-
-
-                        <div>
-                            <label class="mb-4" style="padding-left: 1em;
-                        padding-top: 1em;" for="rankear">Fecha:</label>
-                            <select onchange="obtenerRankings()" disabled id="idFecha" placeholder="idFecha">
-                                <option value="" disabled selected>Selecciona una Fecha</option>
-                            </select>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tablaranking" width="100%" cellspacing="0">
-                                </table>
+                        <div class="card-body" >
+                            <div class="table-responsive" id="tablacomunidadliviano">
+                                
                             </div>
                         </div>
                     </div>
@@ -189,34 +165,34 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <div class="modal fade" id="modalAbrirRolUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modificar rol usuario</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div>
+    <div class="modal fade" id="modalAbrirRolUsuarioliviano" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modificar rol usuario</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div > 
                         <label for="rol">Seleccione un rol:</label>
                         <select name="rol" id="rol">
-                            <optgroup label="Rol Usuario">
-                                <option value="observador">Usuario observador</option>
-                                <option value="afectado">Usuario afectado</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                          <optgroup label="Rol Usuario">
+                            <option value="0">Usuario observador</option>
+                            <option value="1">Usuario afectado</option>
+                          </optgroup>
+                        </select>                 
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary" data-dismiss="modal" onclick="misComunidade()">Modificar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-primary" data-dismiss="modal" onclick="ModificarRolliviano()">Modificar</button>
             </div>
         </div>
     </div>
+</div>
 
 
     <!-- Logout Modal-->
@@ -247,9 +223,8 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
+    <script src="js/adminusuarioliviano.js" defer></script>
     <script src="js/sb-admin-2.js"></script>
-    <script src="js/ranking.js"></script>
-
 
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.js"></script>
@@ -258,15 +233,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    <script>
-        $('#dataTable').DataTable({
-            searching: false,
-            ordering: false,
-            paging: false
-        });
-
-    </script>
+    
 
 
 </body>
 
+</html>

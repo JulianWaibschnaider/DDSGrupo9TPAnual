@@ -1,0 +1,17 @@
+<table class="table table-bordered" id="tablaorgent" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Puesto</th>
+            <th>Entidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#entidades}}
+        <tr>
+            <td>{{puesto}}</td>
+            <td>{{linea.tipoTransporte}} {{linea.nombre}} {{estacion.nombre}} </td>
+        </tr>
+        {{/entidades}}
+    </tbody>
+
+</table>

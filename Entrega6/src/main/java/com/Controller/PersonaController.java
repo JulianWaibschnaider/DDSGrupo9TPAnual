@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.ModelAndView;
 
 import main.java.com.Clases.Model.ComunidadesYMiembros.Comunidad;
 import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
@@ -24,7 +25,6 @@ public class PersonaController {
 	@Autowired
 	PersonaService personaService;
 
-
 	@PostMapping(path = "/DefinirRol")
 	public ResponseEntity<Persona> DefinirRol(@RequestBody String bodyJson) {
 		Persona persona;
@@ -32,7 +32,7 @@ public class PersonaController {
 		int idPersona = jsonObj.getInt("IdPersona");
 		int idComunidad = jsonObj.getInt("IdComunidad");
 		boolean rol = jsonObj.getBoolean("rol");
-		
+
 		try {
 			persona = personaService.definirRolEn(idPersona, idComunidad, rol);
 			return ResponseEntity.ok().body(persona);
@@ -43,9 +43,9 @@ public class PersonaController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 	}
-	
-	@GetMapping(path="/ObtenerPersona")
-	public ResponseEntity<Persona> ObtenerPersona(@RequestBody String bodyJson){
+
+	@GetMapping(path = "/ObtenerPersona")
+	public ResponseEntity<Persona> ObtenerPersona(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		String email = jsonObj.getString("email");
 		try {
@@ -55,33 +55,49 @@ public class PersonaController {
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
-		
+
 	}
-	
-	@PostMapping(path ="/ObtenerComunidadesXpersona")
-	public ResponseEntity<List<Comunidad>> ObtenerComunidadesXpersona(@RequestBody String bodyJson){
+
+	@PostMapping(path = "/ObtenerComunidadesXpersona")
+	public ResponseEntity<List<Comunidad>> ObtenerComunidadesXpersona(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		int idPersona = jsonObj.getInt("IdPersona");
 		try {
-			return new ResponseEntity<> (personaService.BuscarComunidadesPorPersona(idPersona),HttpStatus.OK);
+			return new ResponseEntity<>(personaService.BuscarComunidadesPorPersona(idPersona), HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 	}
-	
+
 	@PostMapping(path = "/ObtenerRolComunidadXPersona")
-	public ResponseEntity<List<Comunidad>>ObtenerRolComunidadXPersona(@RequestBody String bodyJson){
+	public ResponseEntity<List<Comunidad>> ObtenerRolComunidadXPersona(@RequestBody String bodyJson) {
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		int idPersona = jsonObj.getInt("IdPersona");
 		try {
-			return new ResponseEntity<> (personaService.BuscarRolesComunidadesPorPersona(idPersona),HttpStatus.OK);
+			return new ResponseEntity<>(personaService.BuscarRolesComunidadesPorPersona(idPersona), HttpStatus.OK);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 	}
-	
+
+	@PostMapping(path = "/ObtenerRolComunidadXPersonaLiviano")
+	public ModelAndView ObtenerRolComunidadXPersonaLiviano(@RequestBody String bodyJson) {
+		JSONObject jsonObj = new JSONObject(bodyJson);
+		int idPersona = jsonObj.getInt("IdPersona");
+		try {
+			List<Comunidad> comunidades = personaService.BuscarRolesComunidadesPorPersona(idPersona);
+			ModelAndView model = new ModelAndView("tablacomunidadesliviana");
+			model.addObject("comunidades", comunidades);
+			return model;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+	}
+
 }

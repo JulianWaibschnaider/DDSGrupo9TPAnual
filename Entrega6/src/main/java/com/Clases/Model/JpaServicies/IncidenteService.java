@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 //import java.util.Set;
 
 import main.java.com.Clases.Model.ComunidadesYMiembros.Persona;
-import main.java.com.Clases.Model.ComunidadesYMiembros.RepositorioPersonas;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.Incidente;
 import main.java.com.Clases.Model.IncidentesYNotificaciones.RepositorioIncidentes;
 import main.java.com.Clases.Model.Servicios.RepositorioServicios;

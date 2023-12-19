@@ -1,6 +1,6 @@
 function onInit() {
     loadContent('sidebar.html', 'sidebar');
-    loadContent('navbar.html', 'navbar');
+  //  loadContent('navbar.html', 'navbar');
     loadContent('blank.html', 'main-content');
     ponerNombre();
     // Código a ejecutar cuando la página se inicializa
@@ -38,6 +38,10 @@ function misComunidades(){
     navigateToPage('adminusuarios.html');
     onInitRoles();
 } 
+function misComunidadesliviano(){
+    navigateToPage('adminusuariosliviano.html');
+    onInitRolesliviano();
+} 
 function ranking(){
     navigateToPage('ranking.html');
     onInitRanking();
@@ -47,13 +51,15 @@ function cerrarSesion(){
     localStorage.clear();
     window.location.href = "loginfire.html";
 }
-
+function rankingliviano(){
+    navigateToPage('rankingliviano.html');
+} 
 
 function ponerNombre(){
     var nombre = localStorage.getItem('nombre');
 
     // Buscamos el elemento donde queremos mostrar el nombre y lo actualizamos
-    var userNameElement = document.getElementById('nombreusuario');
+    var userNameElement = document.getElementById('nombreusuarioo');
     if (nombre && userNameElement) {
         userNameElement.textContent = nombre;
     }

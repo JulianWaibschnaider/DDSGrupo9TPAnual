@@ -136,7 +136,7 @@
                         <div>
                             <label class="mb-4" style="padding-left: 1em;
                         padding-top: 1em;" for="rankear">Rankear por:</label>
-                            <select name="rankear" id="rankear" onchange="llenarFechas()">
+                            <select name="rankear" id="rankear" onchange="llenarFechasliviano()">
                                 <optgroup label>
                                     <option value="" disabled selected>Selecciona un tipo de ranking</option>
                                     <option value="0">Mayor tiempo promedio cierre de incidentes</option>
@@ -150,15 +150,14 @@
                         <div>
                             <label class="mb-4" style="padding-left: 1em;
                         padding-top: 1em;" for="rankear">Fecha:</label>
-                            <select onchange="obtenerRankings()" disabled id="idFecha" placeholder="idFecha">
+                            <select onchange="obtenerRankingsliviano()" disabled id="idFecha" placeholder="idFecha">
                                 <option value="" disabled selected>Selecciona una Fecha</option>
                             </select>
                         </div>
                         <div class="card-body">
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="tablaranking" width="100%" cellspacing="0">
-                                </table>
+                            <div class="table-responsive" id="divtablaliviana">
+                        
                             </div>
                         </div>
                     </div>
@@ -189,35 +188,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <div class="modal fade" id="modalAbrirRolUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modificar rol usuario</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <label for="rol">Seleccione un rol:</label>
-                        <select name="rol" id="rol">
-                            <optgroup label="Rol Usuario">
-                                <option value="observador">Usuario observador</option>
-                                <option value="afectado">Usuario afectado</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-primary" data-dismiss="modal" onclick="misComunidade()">Modificar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -248,7 +219,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.js"></script>
-    <script src="js/ranking.js"></script>
+    <script src="js/rankingliviano.js"></script>
 
 
     <!-- Page level plugins -->
@@ -270,3 +241,4 @@
 
 </body>
 
+</html>

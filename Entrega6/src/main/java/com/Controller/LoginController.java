@@ -54,7 +54,6 @@ public class LoginController {
 	
 	@PostMapping(path = "/ObtenerPersona")
 	public ResponseEntity<Persona> ObtenerPersona(@RequestBody String bodyJson) {
-		Usuario userIniciado = new Usuario();
 		Usuario usuario = new Usuario();
 		JSONObject jsonObj = new JSONObject(bodyJson);
 		usuario.setEmail(jsonObj.getString("email"));

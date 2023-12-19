@@ -21,3 +21,12 @@ function misComunidades(){
 function ranking(){
     navigateToPage('ranking.html');
 } 
+
+function rankingliviano(){
+    navigateToPage('rankingliviano.html');
+} 
+
+function misComunidadesliviano(){
+    navigateToPage('adminusuarios.html');
+    onInitRolesliviano();
+}
